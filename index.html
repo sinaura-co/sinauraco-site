@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SinauraCo — Creator Management Agency</title>
+  <meta name="description" content="SinauraCo helps creators maximize their earnings, grow their brand, and build long-term success.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+/* ══════════════════════════════════════════════════
+   RESET & TOKENS
+══════════════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#0A7AFF;--deep-blue:#0560CC;--black:#0D0D0F;
+  --dark:#161618;--card:#1C1C1F;--border:rgba(255,255,255,.06);
+  --white:#FFFFFF;--muted:rgba(255,255,255,.55);
+  --font-d:'Syne',sans-serif;--font-b:'DM Sans',sans-serif;
+  /* cinematic easings */
+  --ease-out-expo:cubic-bezier(.16,1,.3,1);
+  --ease-out-quart:cubic-bezier(.25,.46,.45,.94);
+  --ease-cinematic:cubic-bezier(.22,.61,.36,1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--font-b);background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ══════════════════════════════════════════════════
+   FILM GRAIN + VIGNETTE
+══════════════════════════════════════════════════ */
+body::before{
+  content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");
+  animation:grain .5s steps(6) infinite;
+}
+@keyframes grain{0%,100%{transform:translate(0)}10%{transform:translate(-1%,-1%)}30%{transform:translate(1%,2%)}50%{transform:translate(-2%,1%)}70%{transform:translate(2%,-1%)}90%{transform:translate(-1%,2%)}}
+body::after{
+  content:'';position:fixed;inset:0;z-index:9997;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.35) 100%);
+}
+
+/* ══════════════════════════════════════════════════
+   GLOBAL UTILITIES
+══════════════════════════════════════════════════ */
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ══════════════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:18px 40px;font-family:var(--font-d);font-weight:700;font-size:14px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  border:none;border-radius:60px;cursor:pointer;position:relative;overflow:hidden;
+  transition:all .5s var(--ease-cinematic);
+}
+.btn-primary{background:var(--blue);color:var(--white)}
+.btn-primary:hover{background:var(--deep-blue);transform:translateY(-3px);box-shadow:0 12px 48px rgba(10,122,255,.35)}
+.btn-primary::after{content:'→';transition:transform .4s var(--ease-out-expo)}
+.btn-primary:hover::after{transform:translateX(6px)}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.2);color:var(--white)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-3px)}
+
+/* ══════════════════════════════════════════════════
+   SECTION TRANSITIONS — gradient fades between scenes
+══════════════════════════════════════════════════ */
+.scene{position:relative;overflow:hidden}
+.scene-fade-top::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:160px;z-index:2;
+  background:linear-gradient(to bottom,var(--black),transparent);pointer-events:none;
+}
+.scene-fade-bottom::after{
+  content:'';position:absolute;bottom:0;left:0;width:100%;height:160px;z-index:2;
+  background:linear-gradient(to top,var(--black),transparent);pointer-events:none;
+}
+
+/* ══════════════════════════════════════════════════
+   PARALLAX LAYER SYSTEM
+══════════════════════════════════════════════════ */
+.parallax-container{position:relative;overflow:hidden}
+.parallax-bg{
+  position:absolute;inset:-80px;z-index:0;
+  background-size:cover;background-position:center;
+  will-change:transform;transition:transform .1s linear;
+}
+.parallax-fg{position:relative;z-index:3}
+
+/* ══════════════════════════════════════════════════
+   SCROLL REVEAL SYSTEM
+══════════════════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(60px);transition:all 1s var(--ease-out-expo)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-80px);transition:all 1s var(--ease-out-expo)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(80px);transition:all 1s var(--ease-out-expo)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.92);transition:all 1.2s var(--ease-out-expo)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* Stagger children */
+.stagger > *:nth-child(1){transition-delay:.05s}
+.stagger > *:nth-child(2){transition-delay:.12s}
+.stagger > *:nth-child(3){transition-delay:.19s}
+.stagger > *:nth-child(4){transition-delay:.26s}
+.stagger > *:nth-child(5){transition-delay:.33s}
+.stagger > *:nth-child(6){transition-delay:.40s}
+
+/* ══════════════════════════════════════════════════
+   NAV
+══════════════════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:22px 0;transition:all .6s var(--ease-cinematic)}
+.nav.scrolled{background:rgba(13,13,15,.92);backdrop-filter:blur(24px) saturate(1.4);padding:14px 0;border-bottom:1px solid var(--border)}
+.nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-d);font-size:24px;font-weight:800;letter-spacing:-1px}
+.nav-logo em{font-style:normal;color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{font-family:var(--font-d);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{padding:10px 28px !important;background:var(--blue);border-radius:60px;color:var(--white) !important;font-size:12px !important;transition:all .4s var(--ease-cinematic) !important}
+.nav-cta:hover{background:var(--deep-blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,122,255,.3)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-toggle span{width:24px;height:2px;background:var(--white);transition:all .3s}
+
+/* ══════════════════════════════════════════════════
+   HERO — CINEMATIC OPENING SCENE
+══════════════════════════════════════════════════ */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;padding:140px 0 100px;
+  overflow:hidden;
+}
+/* Atmospheric light orbs — parallax background */
+.hero-orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;will-change:transform}
+.hero-orb-1{width:700px;height:700px;top:-200px;right:-150px;background:rgba(10,122,255,.1);animation:orbFloat 20s ease-in-out infinite}
+.hero-orb-2{width:500px;height:500px;bottom:-150px;left:-100px;background:rgba(5,96,204,.07);animation:orbFloat 25s ease-in-out infinite reverse}
+.hero-orb-3{width:300px;height:300px;top:30%;left:50%;background:rgba(10,122,255,.04);animation:orbFloat 15s ease-in-out infinite 5s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0)}25%{transform:translate(30px,-40px)}50%{transform:translate(-20px,30px)}75%{transform:translate(40px,20px)}}
+
+/* Cinematic horizontal line sweep */
+.hero::after{
+  content:'';position:absolute;top:50%;left:0;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(10,122,255,.2) 20%,rgba(10,122,255,.2) 80%,transparent);
+  animation:lineSweep 4s var(--ease-out-expo) 1s both;
+  pointer-events:none;z-index:1;
+}
+@keyframes lineSweep{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+
+.hero-content{position:relative;z-index:5;max-width:700px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 22px;background:rgba(10,122,255,.08);
+  border:1px solid rgba(10,122,255,.15);border-radius:100px;
+  font-family:var(--font-d);font-size:12px;font-weight:700;
+  color:var(--blue);letter-spacing:2px;text-transform:uppercase;
+  opacity:0;animation:fadeUp .8s var(--ease-out-expo) .3s forwards;
+}
+.hero-badge::before{content:'✦';font-size:10px}
+
+.hero h1{
+  font-family:var(--font-d);font-size:clamp(44px,7.5vw,88px);
+  font-weight:800;line-height:1.02;letter-spacing:-3px;
+  margin:28px 0;
+  opacity:0;animation:fadeUp 1s var(--ease-out-expo) .5s forwards;
+}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line-inner{
+  display:block;transform:translateY(110%);
+  animation:lineReveal .9s var(--ease-out-expo) forwards;
+}
+.hero h1 .line:nth-child(1) .line-inner{animation-delay:.6s}
+.hero h1 .line:nth-child(2) .line-inner{animation-delay:.75s}
+.hero h1 .line:nth-child(3) .line-inner{animation-delay:.9s}
+@keyframes lineReveal{to{transform:translateY(0)}}
+
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--blue),#3DA5FF);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:19px;line-height:1.7;color:var(--muted);max-width:520px;
+  opacity:0;animation:fadeUp .8s var(--ease-out-expo) 1.1s forwards;
+}
+.hero-buttons{
+  display:flex;gap:16px;flex-wrap:wrap;margin-top:44px;
+  opacity:0;animation:fadeUp .8s var(--ease-out-expo) 1.3s forwards;
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+/* Hero stats — cinematic count-up area */
+.hero-stats{
+  display:flex;gap:56px;margin-top:80px;padding-top:40px;
+  border-top:1px solid var(--border);
+  opacity:0;animation:fadeUp .8s var(--ease-out-expo) 1.5s forwards;
+}
+.hero-stat-num{font-family:var(--font-d);font-size:40px;font-weight:800;color:var(--blue);line-height:1}
+.hero-stat-lbl{font-size:13px;color:var(--muted);margin-top:6px;letter-spacing:.5px}
+
+/* ══════════════════════════════════════════════════
+   ABOUT — SPLIT SCENE WITH DEPTH
+══════════════════════════════════════════════════ */
+.about{padding:160px 0;position:relative}
+.about::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(10,122,255,.25),transparent)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.section-label{font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--blue);margin-bottom:20px;display:block}
+.section-title{font-family:var(--font-d);font-size:clamp(30px,4.5vw,52px);font-weight:800;line-height:1.08;letter-spacing:-1.5px;margin-bottom:24px}
+.section-title em{font-style:normal;color:var(--blue)}
+.section-desc{font-size:17px;line-height:1.75;color:var(--muted);max-width:560px}
+
+.about-features{display:flex;flex-direction:column;gap:28px;margin-top:48px}
+.about-feature{display:flex;gap:20px;align-items:flex-start}
+.about-feature-icon{
+  width:52px;height:52px;min-width:52px;
+  background:rgba(10,122,255,.08);border:1px solid rgba(10,122,255,.12);
+  border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;
+  transition:all .5s var(--ease-cinematic);
+}
+.about-feature:hover .about-feature-icon{background:rgba(10,122,255,.15);transform:scale(1.08)}
+.about-feature h4{font-family:var(--font-d);font-size:17px;font-weight:700;margin-bottom:4px}
+.about-feature p{font-size:15px;line-height:1.65;color:var(--muted)}
+
+/* Visual card with cinematic tilt on hover */
+.about-card{
+  background:var(--dark);border:1px solid var(--border);border-radius:24px;
+  padding:52px;position:relative;overflow:hidden;
+  transition:transform .8s var(--ease-cinematic),box-shadow .8s var(--ease-cinematic);
+}
+.about-card:hover{transform:perspective(800px) rotateY(-2deg) rotateX(1deg);box-shadow:0 24px 80px rgba(10,122,255,.08)}
+.about-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--blue),var(--deep-blue))}
+.about-card blockquote{font-family:var(--font-d);font-size:26px;font-weight:700;line-height:1.35;margin-bottom:20px}
+.about-card cite{font-size:14px;color:var(--muted);font-style:normal}
+
+/* ══════════════════════════════════════════════════
+   SERVICES — CINEMATIC GRID WITH PAN EFFECT
+══════════════════════════════════════════════════ */
+.services{padding:160px 0;background:var(--dark);position:relative}
+.services::before,.services::after{
+  content:'';position:absolute;left:0;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(10,122,255,.25),transparent);
+}
+.services::before{top:0}.services::after{bottom:0}
+.services-header{text-align:center;margin-bottom:80px}
+.services-header .section-desc{margin:0 auto}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+.service-card{
+  background:var(--card);border:1px solid var(--border);border-radius:20px;
+  padding:44px 32px;position:relative;overflow:hidden;
+  transition:all .6s var(--ease-cinematic);
+}
+/* Inner glow overlay on hover */
+.service-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(10,122,255,.06),transparent 70%);
+  opacity:0;transition:opacity .6s;
+}
+.service-card:hover{border-color:rgba(10,122,255,.25);transform:translateY(-8px)}
+.service-card:hover::after{opacity:1}
+
+.service-icon{
+  width:56px;height:56px;background:rgba(10,122,255,.1);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;font-size:24px;
+  margin-bottom:24px;position:relative;z-index:1;
+  transition:transform .5s var(--ease-out-expo);
+}
+.service-card:hover .service-icon{transform:scale(1.1) rotate(-3deg)}
+.service-card h3{font-family:var(--font-d);font-size:19px;font-weight:700;margin-bottom:12px;position:relative;z-index:1}
+.service-card p{font-size:15px;line-height:1.7;color:var(--muted);position:relative;z-index:1}
+
+/* ══════════════════════════════════════════════════
+   RESULTS — FULL-SCENE CINEMATIC REVEAL
+══════════════════════════════════════════════════ */
+.results{padding:160px 0;position:relative}
+.results-header{text-align:center;margin-bottom:80px}
+.results-header .section-desc{margin:0 auto}
+
+.results-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:100px}
+.result-stat{
+  text-align:center;padding:48px 24px;
+  background:var(--dark);border:1px solid var(--border);border-radius:20px;
+  position:relative;overflow:hidden;
+  transition:all .6s var(--ease-cinematic);
+}
+.result-stat::before{
+  content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  transform:scaleX(0);transition:transform .6s var(--ease-out-expo);
+}
+.result-stat:hover{transform:translateY(-6px);border-color:rgba(10,122,255,.2)}
+.result-stat:hover::before{transform:scaleX(1)}
+.result-num{font-family:var(--font-d);font-size:52px;font-weight:800;color:var(--blue);line-height:1}
+.result-lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-family:var(--font-d);font-weight:600;margin-top:10px}
+
+/* Promises split */
+.results-split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.promises-title{font-family:var(--font-d);font-size:clamp(22px,3vw,32px);font-weight:800;margin-bottom:32px;letter-spacing:-1px}
+.promises-title em{font-style:normal;color:var(--blue)}
+
+.promises-list{list-style:none;display:flex;flex-direction:column;gap:18px}
+.promises-list li{
+  display:flex;align-items:center;gap:16px;font-size:17px;font-weight:500;
+  opacity:.85;transition:all .4s var(--ease-cinematic);
+}
+.promises-list li:hover{opacity:1;transform:translateX(8px)}
+.promises-list li::before{
+  content:'✓';width:32px;height:32px;min-width:32px;
+  background:rgba(10,122,255,.12);color:var(--blue);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;
+}
+
+.goodbye-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.goodbye-list li{
+  font-family:var(--font-d);font-size:22px;font-weight:700;
+  color:rgba(255,255,255,.2);transition:all .5s var(--ease-cinematic);
+}
+.goodbye-list li:hover{color:rgba(255,255,255,.6);transform:translateX(8px)}
+.goodbye-list li em{font-style:normal;color:var(--blue)}
+
+/* ══════════════════════════════════════════════════
+   WHY US — CINEMATIC CARD ZOOM
+══════════════════════════════════════════════════ */
+.why{padding:160px 0;background:var(--dark);position:relative}
+.why::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(10,122,255,.25),transparent)}
+.why-header{text-align:center;margin-bottom:80px}
+.why-header .section-desc{margin:0 auto}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{
+  padding:52px 36px;border-radius:20px;text-align:center;
+  border:1px solid rgba(10,122,255,.1);
+  background:linear-gradient(160deg,rgba(10,122,255,.04),transparent);
+  transition:all .7s var(--ease-cinematic);
+  position:relative;overflow:hidden;
+}
+.why-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 30%,rgba(10,122,255,.08),transparent 60%);
+  opacity:0;transition:opacity .6s;
+}
+.why-card:hover{transform:translateY(-10px) scale(1.02);border-color:rgba(10,122,255,.3)}
+.why-card:hover::before{opacity:1}
+.why-emoji{font-size:52px;margin-bottom:24px;position:relative;z-index:1}
+.why-card h3{font-family:var(--font-d);font-size:20px;font-weight:700;margin-bottom:12px;position:relative;z-index:1}
+.why-card p{font-size:15px;line-height:1.7;color:var(--muted);position:relative;z-index:1}
+
+/* ══════════════════════════════════════════════════
+   CTA BAND — CINEMATIC GLOW
+══════════════════════════════════════════════════ */
+.cta-band{padding:100px 0;text-align:center;position:relative;overflow:hidden}
+.cta-band-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--blue),var(--deep-blue));
+  z-index:0;
+}
+/* Animated light sweep */
+.cta-band-bg::after{
+  content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(circle at 30% 50%,rgba(255,255,255,.1),transparent 50%);
+  animation:ctaSweep 8s ease-in-out infinite;
+}
+@keyframes ctaSweep{0%,100%{transform:translate(0,0)}50%{transform:translate(5%,3%)}}
+
+.cta-band h2{font-family:var(--font-d);font-size:clamp(28px,4vw,48px);font-weight:800;position:relative;z-index:1;letter-spacing:-1px}
+.cta-band p{font-size:18px;opacity:.85;margin:12px 0 40px;position:relative;z-index:1}
+.cta-band .btn-primary{background:var(--white);color:var(--blue);position:relative;z-index:1}
+.cta-band .btn-primary:hover{box-shadow:0 12px 40px rgba(0,0,0,.25);background:var(--white)}
+
+/* ══════════════════════════════════════════════════
+   APPLICATION FORM
+══════════════════════════════════════════════════ */
+.apply{padding:160px 0;position:relative}
+.apply-header{text-align:center;margin-bottom:64px}
+.apply-header .section-desc{margin:0 auto}
+
+.form-wrapper{
+  max-width:720px;margin:0 auto;
+  background:var(--dark);border:1px solid var(--border);border-radius:28px;
+  padding:56px;position:relative;overflow:hidden;
+}
+/* Subtle shimmer border */
+.form-wrapper::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:2px;
+  background:linear-gradient(90deg,transparent 20%,var(--blue) 50%,transparent 80%);
+  animation:shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* Progress */
+.form-progress{display:flex;justify-content:space-between;margin-bottom:52px;position:relative}
+.form-progress::before{content:'';position:absolute;top:17px;left:24px;right:24px;height:2px;background:rgba(255,255,255,.06)}
+.form-progress-track{position:absolute;top:17px;left:24px;height:2px;background:var(--blue);transition:width .6s var(--ease-out-expo);width:0}
+.form-step-ind{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:1}
+.form-step-dot{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--card);border:2px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-d);font-size:13px;font-weight:700;
+  transition:all .5s var(--ease-cinematic);
+}
+.form-step-ind.active .form-step-dot,.form-step-ind.completed .form-step-dot{border-color:var(--blue);background:var(--blue)}
+.form-step-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.3);font-family:var(--font-d);font-weight:600;transition:color .3s}
+.form-step-ind.active .form-step-lbl{color:var(--blue)}
+
+/* Form pages */
+.form-page{display:none;animation:fadeUp .5s var(--ease-out-expo)}
+.form-page.active{display:block}
+.form-page-title{font-family:var(--font-d);font-size:24px;font-weight:700;margin-bottom:8px}
+.form-page-desc{font-size:14px;color:var(--muted);margin-bottom:36px}
+
+.form-group{margin-bottom:24px}
+.form-group label{display:block;font-family:var(--font-d);font-size:14px;font-weight:600;margin-bottom:8px;color:rgba(255,255,255,.85)}
+.form-group .req{color:var(--blue);margin-left:2px}
+.form-group input[type="text"],.form-group input[type="email"],.form-group input[type="tel"],.form-group textarea{
+  width:100%;padding:15px 20px;background:var(--card);border:1px solid var(--border);
+  border-radius:14px;color:var(--white);font-family:var(--font-b);font-size:15px;
+  transition:border-color .4s var(--ease-cinematic),box-shadow .4s var(--ease-cinematic);outline:none;
+}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(10,122,255,.1)}
+.form-group textarea{resize:vertical;min-height:100px}
+
+.checkbox-group,.radio-group{display:flex;flex-direction:column;gap:8px}
+.checkbox-group label,.radio-group label{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 18px;background:var(--card);border:1px solid var(--border);
+  border-radius:12px;cursor:pointer;font-weight:400;font-size:15px;
+  color:rgba(255,255,255,.75);margin-bottom:0;
+  transition:all .3s var(--ease-cinematic);
+}
+.checkbox-group label:hover,.radio-group label:hover{border-color:rgba(10,122,255,.25);background:rgba(10,122,255,.04)}
+.checkbox-group input,.radio-group input{width:18px;height:18px;accent-color:var(--blue);flex-shrink:0}
+
+.form-nav{display:flex;justify-content:space-between;margin-top:40px;gap:16px}
+.form-nav .btn{flex:1;justify-content:center}
+.btn-back{
+  background:rgba(255,255,255,.04) !important;border:1px solid var(--border) !important;
+  color:var(--muted) !important;
+}
+.btn-back::after{content:'' !important}
+.btn-back::before{content:'←';margin-right:6px}
+.btn-back:hover{background:rgba(255,255,255,.08) !important;box-shadow:none !important;transform:none !important}
+
+.form-success{display:none;text-align:center;padding:72px 32px}
+.form-success.active{display:block;animation:fadeUp .7s var(--ease-out-expo)}
+.form-success-icon{width:80px;height:80px;background:rgba(10,122,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 28px}
+.form-success h3{font-family:var(--font-d);font-size:28px;font-weight:800;margin-bottom:12px}
+.form-success p{font-size:16px;color:var(--muted);line-height:1.7}
+
+/* ══════════════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════════════ */
+.contact{padding:160px 0;background:var(--dark);position:relative}
+.contact::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(10,122,255,.25),transparent)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-items{display:flex;flex-direction:column;gap:28px;margin-top:48px}
+.contact-item{display:flex;gap:16px;align-items:center}
+.contact-item-icon{
+  width:52px;height:52px;min-width:52px;
+  background:rgba(10,122,255,.08);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.contact-item h4{font-family:var(--font-d);font-size:15px;font-weight:700;margin-bottom:2px}
+.contact-item p{font-size:14px;color:var(--muted)}
+.contact-item a{color:var(--blue);transition:opacity .3s}
+.contact-item a:hover{opacity:.8}
+
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:44px}
+.contact-form h3{font-family:var(--font-d);font-size:22px;font-weight:700;margin-bottom:28px}
+
+/* ══════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════ */
+.footer{padding:40px 0;border-top:1px solid var(--border)}
+.footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:13px;color:rgba(255,255,255,.3)}
+.footer-links{display:flex;gap:24px;list-style:none}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.3);transition:color .3s}
+.footer-links a:hover{color:var(--blue)}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════ */
+@media(max-width:968px){
+  .about-grid,.results-split,.contact-grid{grid-template-columns:1fr;gap:48px}
+  .services-grid,.why-grid{grid-template-columns:1fr 1fr}
+  .results-stats{grid-template-columns:repeat(2,1fr)}
+  .hero-stats{gap:32px}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-links.open{
+    display:flex;flex-direction:column;position:absolute;top:100%;left:0;width:100%;
+    background:rgba(13,13,15,.98);backdrop-filter:blur(20px);
+    padding:24px;gap:20px;border-bottom:1px solid var(--border);
+  }
+  .nav-toggle{display:flex}
+  .services-grid,.why-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column;gap:20px}
+  .hero h1{letter-spacing:-1.5px}
+  .form-wrapper{padding:32px 20px}
+  .form-step-lbl{display:none}
+  .form-progress{margin-bottom:36px}
+  .hero-orb-1{width:400px;height:400px}
+  .hero-orb-2{width:300px;height:300px}
+  .about{padding:100px 0}.services{padding:100px 0}.results{padding:100px 0}
+  .why{padding:100px 0}.apply{padding:100px 0}.contact{padding:100px 0}
+}
+  </style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">Sinaura<em>Co</em></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#apply">Apply</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#apply" class="nav-cta">Apply Now</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero scene scene-fade-bottom" id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Creator Management Agency</div>
+      <h1>
+        <span class="line"><span class="line-inner">We Help Creators</span></span>
+        <span class="line"><span class="line-inner"><em>Maximize Their</em></span></span>
+        <span class="line"><span class="line-inner"><em>Earnings & Brand</em></span></span>
+      </h1>
+      <p class="hero-sub">Full-service growth, engagement, and monetization — so you can focus on creating content and doing what you love.</p>
+      <div class="hero-buttons">
+        <a href="#apply" class="btn btn-primary">Apply Now</a>
+        <a href="#services" class="btn btn-ghost">What We Do</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">24/7</div><div class="hero-stat-lbl">Fan Management</div></div>
+        <div><div class="hero-stat-num">6+</div><div class="hero-stat-lbl">Platforms Covered</div></div>
+        <div><div class="hero-stat-num">100%</div><div class="hero-stat-lbl">Confidential</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ ABOUT ════════ -->
+<section class="about scene" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="section-label reveal">Who We Are</span>
+        <h2 class="section-title reveal">Built for Creators<br>Who Mean <em>Business</em></h2>
+        <p class="section-desc reveal">SinauraCo helps creators focus on creating while we handle growth and operations. No cookie-cutter strategies — everything is tailored to your brand.</p>
+        <div class="about-features stagger">
+          <div class="about-feature reveal">
+            <div class="about-feature-icon">📈</div>
+            <div><h4>Proven Revenue Growth</h4><p>Data-driven promotions, campaigns, and upsell systems designed to increase your income consistently.</p></div>
+          </div>
+          <div class="about-feature reveal">
+            <div class="about-feature-icon">🤝</div>
+            <div><h4>Experienced Team</h4><p>Our trained team handles daily messaging, fan engagement, upsells, and relationship-building around the clock.</p></div>
+          </div>
+          <div class="about-feature reveal">
+            <div class="about-feature-icon">🔒</div>
+            <div><h4>Full Privacy & Discretion</h4><p>Confidentiality and professionalism every step of the way. Your privacy is non-negotiable.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-scale">
+        <div class="about-card">
+          <blockquote>"We don't just manage accounts — we build empires."</blockquote>
+          <cite>SinauraCo operates as a dedicated creator management agency. We review all applications with the highest level of confidentiality to ensure your personal information and business details remain private and secure.</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SERVICES ════════ -->
+<section class="services scene" id="services">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-label reveal">What We Do</span>
+      <h2 class="section-title reveal">All-in-One <em>Creator Support</em></h2>
+      <p class="section-desc reveal">From content planning to fan engagement — we've got every angle covered so you can focus on what you do best.</p>
+    </div>
+    <div class="services-grid stagger">
+      <div class="service-card reveal">
+        <div class="service-icon">💬</div>
+        <h3>Fan Management & Engagement</h3>
+        <p>Our trained team handles daily messaging, upsells, and relationship-building so you can focus on content. 24/7 coverage that keeps your fans engaged.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">💰</div>
+        <h3>Revenue Growth Strategies</h3>
+        <p>Proven promotions, campaigns, and upsell systems designed to increase your income consistently. We optimize pricing, offers, and conversion flows.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📅</div>
+        <h3>Content Scheduling & Optimization</h3>
+        <p>Guidance on when and how to post for maximum engagement. We plan, schedule, and analyze so every piece of content works harder for you.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📊</div>
+        <h3>Ongoing Support & Reporting</h3>
+        <p>Weekly updates, strategy sessions, and performance reports so you always know your progress. Full transparency, zero guesswork.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🎨</div>
+        <h3>Professional Branding</h3>
+        <p>Assistance with organizing your vault, structuring your offers, and building a fan experience that keeps subscribers coming back for more.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚀</div>
+        <h3>Multi-Platform Marketing</h3>
+        <p>Strategic growth across Instagram, TikTok, Twitter, Reddit, and more. We drive traffic from every angle to maximize your reach and revenue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ RESULTS ════════ -->
+<section class="results scene" id="results">
+  <div class="container">
+    <div class="results-header">
+      <span class="section-label reveal">Results</span>
+      <h2 class="section-title reveal">We Have the <em>Results</em> to Back It</h2>
+      <p class="section-desc reveal">No empty promises. Our personalized approach to management is what sets us apart — and the numbers prove it.</p>
+    </div>
+    <div class="results-stats stagger">
+      <div class="result-stat reveal"><div class="result-num">8+</div><div class="result-lbl">Months Growing</div></div>
+      <div class="result-stat reveal"><div class="result-num">6+</div><div class="result-lbl">Platforms</div></div>
+      <div class="result-stat reveal"><div class="result-num">24/7</div><div class="result-lbl">Fan Coverage</div></div>
+      <div class="result-stat reveal"><div class="result-num">100%</div><div class="result-lbl">Confidential</div></div>
+    </div>
+    <div class="results-split">
+      <div>
+        <h3 class="promises-title reveal">What You <em>Get</em></h3>
+        <ul class="promises-list stagger">
+          <li class="reveal">We always reply on time</li>
+          <li class="reveal">We never get your accounts banned</li>
+          <li class="reveal">We take care of leaked content</li>
+          <li class="reveal">We consistently bring in new fans</li>
+          <li class="reveal">We handle everything so you don't have to</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="promises-title reveal">Say Goodbye To</h3>
+        <ul class="goodbye-list stagger">
+          <li class="reveal">No more <em>inconsistency</em></li>
+          <li class="reveal">No more <em>stress</em></li>
+          <li class="reveal">No more <em>missed revenue</em></li>
+          <li class="reveal">No more <em>doing it alone</em></li>
+          <li class="reveal">No more <em>broken promises</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ WHY US ════════ -->
+<section class="why scene" id="why">
+  <div class="container">
+    <div class="why-header">
+      <span class="section-label reveal">Why SinauraCo</span>
+      <h2 class="section-title reveal">Your Life. Your Future.<br><em>Your Decision.</em></h2>
+      <p class="section-desc reveal">We're not just another agency. We're your dedicated growth partner with a personalized approach to everything we do.</p>
+    </div>
+    <div class="why-grid stagger">
+      <div class="why-card reveal">
+        <div class="why-emoji">🎯</div>
+        <h3>No Cookie-Cutter Approach</h3>
+        <p>Personalized strategies tailored to your brand, your audience, and your goals. Nothing generic — everything custom.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-emoji">🛡️</div>
+        <h3>Privacy First</h3>
+        <p>Confidentiality and professionalism every step of the way. Your personal information and business details stay private and secure.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-emoji">📈</div>
+        <h3>We Only Win When You Win</h3>
+        <p>Our success is tied to yours. We're invested in your growth because our business depends on your results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CTA BAND ════════ -->
+<section class="cta-band scene">
+  <div class="cta-band-bg"></div>
+  <div class="container">
+    <h2 class="reveal">Ready to Scale Your Brand?</h2>
+    <p class="reveal">Join SinauraCo and let us handle the rest. Apply now and see what's possible.</p>
+    <a href="#apply" class="btn btn-primary reveal">Apply Now</a>
+  </div>
+</section>
+
+<!-- ════════ APPLICATION FORM ════════ -->
+<section class="apply scene" id="apply">
+  <div class="container">
+    <div class="apply-header">
+      <span class="section-label reveal">Apply Now</span>
+      <h2 class="section-title reveal">Start Your <em>Application</em></h2>
+      <p class="section-desc reveal">Complete every question thoroughly and honestly — incomplete applications may not be reviewed.</p>
+    </div>
+    <div class="form-wrapper reveal-scale">
+      <div class="form-progress">
+        <div class="form-progress-track" id="progressTrack"></div>
+        <div class="form-step-ind active" data-step="1"><div class="form-step-dot">1</div><span class="form-step-lbl">Info</span></div>
+        <div class="form-step-ind" data-step="2"><div class="form-step-dot">2</div><span class="form-step-lbl">Profile</span></div>
+        <div class="form-step-ind" data-step="3"><div class="form-step-dot">3</div><span class="form-step-lbl">Goals</span></div>
+        <div class="form-step-ind" data-step="4"><div class="form-step-dot">4</div><span class="form-step-lbl">Logistics</span></div>
+        <div class="form-step-ind" data-step="5"><div class="form-step-dot">5</div><span class="form-step-lbl">Finish</span></div>
+      </div>
+
+      <form id="applicationForm" action="https://formspree.io/f/xkoeyqyk" method="POST">
+
+        <!-- PAGE 1 -->
+        <div class="form-page active" data-page="1">
+          <h3 class="form-page-title">Basic Information</h3>
+          <p class="form-page-desc">Let's start with who you are.</p>
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="Full name"></div>
+          <div class="form-group"><label>Email Address <span class="req">*</span></label><input type="email" name="email" required placeholder="your@email.com"></div>
+          <div class="form-group"><label>Instagram / TikTok / Twitter Handle(s) <span class="req">*</span></label><input type="text" name="socials" required placeholder="@yourhandle"></div>
+          <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" required placeholder="(555) 123-4567"></div>
+          <div class="form-nav"><div></div><button type="button" class="btn btn-primary" onclick="nextPage()">Next</button></div>
+        </div>
+
+        <!-- PAGE 2 -->
+        <div class="form-page" data-page="2">
+          <h3 class="form-page-title">Creator Profile</h3>
+          <p class="form-page-desc">Tell us about your content and journey so far.</p>
+          <div class="form-group">
+            <label>What type of content do you create? <span class="req">*</span></label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="content_type" value="Lifestyle (Entrepreneur, Day Trader, etc.)"> Lifestyle (Entrepreneur, Day Trader, etc.)</label>
+              <label><input type="checkbox" name="content_type" value="Fitness (Personal Training, Diet Meal Plans, etc.)"> Fitness (Personal Training, Diet Meal Plans, etc.)</label>
+              <label><input type="checkbox" name="content_type" value="Fashion (IG Model, Brand Ambassador, etc.)"> Fashion (IG Model, Brand Ambassador, etc.)</label>
+              <label><input type="checkbox" name="content_type" value="Gaming (Twitch, Kick, etc.)"> Gaming (Twitch, Kick, etc.)</label>
+              <label><input type="checkbox" name="content_type" value="Adult (OnlyFans, Fanvue, etc.)"> Adult (OnlyFans, Fanvue, etc.)</label>
+              <label><input type="checkbox" name="content_type" value="Other"> Other</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>How long have you been creating content? <span class="req">*</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="experience" value="Less than 6 months" required> Less than 6 months</label>
+              <label><input type="radio" name="experience" value="6-12 months"> 6–12 months</label>
+              <label><input type="radio" name="experience" value="1-2 years"> 1–2 years</label>
+              <label><input type="radio" name="experience" value="2+ years"> 2+ years</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Average monthly earnings from content? <span class="req">*</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="earnings" value="Less than $1K" required> Less than $1K</label>
+              <label><input type="radio" name="earnings" value="$1K-$5K"> $1K–$5K</label>
+              <label><input type="radio" name="earnings" value="$5K-$10K"> $5K–$10K</label>
+              <label><input type="radio" name="earnings" value="$10K+"> $10K+</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Which platforms do you focus on? <span class="req">*</span></label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="platforms" value="Instagram"> Instagram</label>
+              <label><input type="checkbox" name="platforms" value="TikTok"> TikTok</label>
+              <label><input type="checkbox" name="platforms" value="Twitter"> Twitter</label>
+              <label><input type="checkbox" name="platforms" value="YouTube"> YouTube</label>
+              <label><input type="checkbox" name="platforms" value="Reddit"> Reddit</label>
+              <label><input type="checkbox" name="platforms" value="Other"> Other</label>
+            </div>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-back" onclick="prevPage()">Back</button>
+            <button type="button" class="btn btn-primary" onclick="nextPage()">Next</button>
+          </div>
+        </div>
+
+        <!-- PAGE 3 -->
+        <div class="form-page" data-page="3">
+          <h3 class="form-page-title">Goals & Needs</h3>
+          <p class="form-page-desc">We want to understand your vision.</p>
+          <div class="form-group"><label>What are your biggest challenges as a creator right now? <span class="req">*</span></label><textarea name="challenges" required placeholder="Tell us what's been holding you back..."></textarea></div>
+          <div class="form-group"><label>What are your goals for the next 6–12 months? <span class="req">*</span></label><textarea name="goals" required placeholder="Where do you want to be?"></textarea></div>
+          <div class="form-group">
+            <label>What areas do you need the most help with? <span class="req">*</span></label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="help_areas" value="Content planning"> Content planning</label>
+              <label><input type="checkbox" name="help_areas" value="Fan engagement"> Fan engagement</label>
+              <label><input type="checkbox" name="help_areas" value="Branding"> Branding</label>
+              <label><input type="checkbox" name="help_areas" value="Revenue growth"> Revenue growth</label>
+              <label><input type="checkbox" name="help_areas" value="Other"> Other</label>
+            </div>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-back" onclick="prevPage()">Back</button>
+            <button type="button" class="btn btn-primary" onclick="nextPage()">Next</button>
+          </div>
+        </div>
+
+        <!-- PAGE 4 -->
+        <div class="form-page" data-page="4">
+          <h3 class="form-page-title">Logistics</h3>
+          <p class="form-page-desc">Quick details so we know how you work.</p>
+          <div class="form-group">
+            <label>Are you open to signing an exclusivity/management agreement? <span class="req">*</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="exclusivity" value="Yes" required> Yes</label>
+              <label><input type="radio" name="exclusivity" value="No"> No</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Do you currently work with another agency or team? <span class="req">*</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="current_agency" value="Yes" required> Yes</label>
+              <label><input type="radio" name="current_agency" value="No"> No</label>
+            </div>
+          </div>
+          <div class="form-group"><label>If "Yes", are you free to leave without restrictions, or are you required to fulfill a term in an existing agreement/contract?</label><textarea name="contract_status" placeholder="Explain your current situation..."></textarea></div>
+          <div class="form-group">
+            <label>Best way to reach you for next steps? <span class="req">*</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="contact_pref" value="Email" required> Email</label>
+              <label><input type="radio" name="contact_pref" value="Phone"> Phone</label>
+              <label><input type="radio" name="contact_pref" value="Social Media DMs"> Social Media DMs</label>
+              <label><input type="radio" name="contact_pref" value="Other"> Other</label>
+            </div>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-back" onclick="prevPage()">Back</button>
+            <button type="button" class="btn btn-primary" onclick="nextPage()">Next</button>
+          </div>
+        </div>
+
+        <!-- PAGE 5 -->
+        <div class="form-page" data-page="5">
+          <h3 class="form-page-title">Wrap-Up</h3>
+          <p class="form-page-desc">Final details before sending your application.</p>
+          <div class="form-group">
+            <label>How did you hear about SinauraCo? <span class="req">*</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="referral_source" value="Referral" required> Referral</label>
+              <label><input type="radio" name="referral_source" value="Instagram"> Instagram</label>
+              <label><input type="radio" name="referral_source" value="TikTok"> TikTok</label>
+              <label><input type="radio" name="referral_source" value="Website"> Website</label>
+              <label><input type="radio" name="referral_source" value="Other"> Other</label>
+            </div>
+          </div>
+          <div class="form-group"><label>Anything else you'd like us to know?</label><textarea name="additional_info" placeholder="Optional — anything else you want to share"></textarea></div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-back" onclick="prevPage()">Back</button>
+            <button type="submit" class="btn btn-primary" style="background:linear-gradient(135deg,var(--blue),var(--deep-blue))">Submit Application</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">🚀</div>
+        <h3>Application Received!</h3>
+        <p>Thank you for applying to SinauraCo. We review every application personally and will reach out within 48 hours. Check your email for confirmation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CONTACT ════════ -->
+<section class="contact scene" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="section-label reveal">Contact</span>
+        <h2 class="section-title reveal">Get in <em>Touch</em></h2>
+        <p class="section-desc reveal">Have questions before applying? Reach out — we'd love to hear from you.</p>
+        <div class="contact-items stagger">
+          <div class="contact-item reveal">
+            <div class="contact-item-icon">📧</div>
+            <div><h4>Email</h4><p><a href="mailto:contact@sinauraco.com">contact@sinauraco.com</a></p></div>
+          </div>
+          <div class="contact-item reveal">
+            <div class="contact-item-icon">📸</div>
+            <div><h4>Instagram</h4><p><a href="https://instagram.com/sinauraco" target="_blank" rel="noopener">@sinauraco</a></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <h3>Send Us a Message</h3>
+        <form action="https://formspree.io/f/xwvzyryz" method="POST">
+          <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Your name"></div>
+          <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="email" required placeholder="your@email.com"></div>
+          <div class="form-group"><label>Message <span class="req">*</span></label><textarea name="message" required placeholder="How can we help?"></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-copy">&copy; 2025 SinauraCo, LLC. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- ════════ SCRIPTS ════════ -->
+<script>
+/* ── Nav scroll ── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+
+/* ── Mobile nav ── */
+const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+/* ── Scroll reveal with IntersectionObserver ── */
+const revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
+const revealObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}});
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el=>revealObs.observe(el));
+
+/* ── Parallax on hero orbs ── */
+let ticking=false;
+window.addEventListener('scroll',()=>{
+  if(!ticking){
+    requestAnimationFrame(()=>{
+      const s=scrollY;
+      document.querySelectorAll('.hero-orb').forEach((orb,i)=>{
+        const speed=[.03,.02,.04][i]||.03;
+        orb.style.transform=`translateY(${s*speed}px)`;
+      });
+      ticking=false;
+    });
+    ticking=true;
+  }
+});
+
+/* ── Multi-step form ── */
+let currentPage=1;const totalPages=5;
+function updateProgress(){
+  const pct=((currentPage-1)/(totalPages-1))*100;
+  document.getElementById('progressTrack').style.width=pct+'%';
+  document.querySelectorAll('.form-step-ind').forEach(ind=>{
+    const s=+ind.dataset.step;
+    ind.classList.toggle('active',s===currentPage);
+    ind.classList.toggle('completed',s<currentPage);
+  });
+}
+function showPage(n){
+  document.querySelectorAll('.form-page').forEach(p=>p.classList.remove('active'));
+  const t=document.querySelector(`.form-page[data-page="${n}"]`);
+  if(t)t.classList.add('active');
+  currentPage=n;updateProgress();
+  /* scroll form into view smoothly */
+  document.getElementById('apply').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function nextPage(){if(currentPage<totalPages)showPage(currentPage+1)}
+function prevPage(){if(currentPage>1)showPage(currentPage-1)}
+
+/* ── Form submit ── */
+document.getElementById('applicationForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  try{
+    const r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
+    if(r.ok){this.style.display='none';document.querySelector('.form-progress').style.display='none';document.getElementById('formSuccess').classList.add('active')}
+  }catch{
+    this.style.display='none';document.querySelector('.form-progress').style.display='none';document.getElementById('formSuccess').classList.add('active');
+  }
+});
+
+/* ── Smooth anchor scroll offset for fixed nav ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');if(id==='#')return;
+    const el=document.querySelector(id);if(!el)return;
+    e.preventDefault();
+    const y=el.getBoundingClientRect().top+scrollY-80;
+    window.scrollTo({top:y,behavior:'smooth'});
+  });
+});
+</script>
+
+</body>
+</html>
