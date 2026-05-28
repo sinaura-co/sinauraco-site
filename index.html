@@ -7,7 +7,7 @@
   <meta name="description" content="SinauraCo helps creators maximize their earnings, grow their brand, and build long-term success.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <style>
 /* ══════════════════════════════════════════════════
    RESET & TOKENS
@@ -17,7 +17,7 @@
   --blue:#0A7AFF;--deep-blue:#0560CC;--black:#0D0D0F;
   --dark:#161618;--card:#1C1C1F;--border:rgba(255,255,255,.06);
   --white:#FFFFFF;--muted:rgba(255,255,255,.55);
-  --font-d:'Syne',sans-serif;--font-b:'DM Sans',sans-serif;
+  --font-d:'Montserrat',sans-serif;--font-b:'DM Sans',sans-serif;
   /* cinematic easings */
   --ease-out-expo:cubic-bezier(.16,1,.3,1);
   --ease-out-quart:cubic-bezier(.25,.46,.45,.94);
@@ -499,7 +499,8 @@ body::after{
   .nav-toggle{display:flex}
   .services-grid,.why-grid{grid-template-columns:1fr}
   .hero-stats{flex-direction:column;gap:20px}
-  .hero h1{letter-spacing:-1.5px}
+  .hero h1{letter-spacing:-1.5px;font-size:clamp(36px,10vw,52px)}
+  .hero-sub{font-size:16px}
   .form-wrapper{padding:32px 20px}
   .form-step-lbl{display:none}
   .form-progress{margin-bottom:36px}
@@ -507,6 +508,36 @@ body::after{
   .hero-orb-2{width:300px;height:300px}
   .about{padding:100px 0}.services{padding:100px 0}.results{padding:100px 0}
   .why{padding:100px 0}.apply{padding:100px 0}.contact{padding:100px 0}
+  /* Fix stat cards overflow on mobile */
+  .results-stats{grid-template-columns:1fr 1fr;gap:12px}
+  .result-stat{padding:28px 16px}
+  .result-num{font-size:36px}
+  .result-lbl{font-size:10px;letter-spacing:1px}
+  /* Fix hero stats overflow */
+  .hero-stat-num{font-size:32px}
+  .hero-stat-lbl{font-size:12px}
+  /* Fix buttons not stretching weird */
+  .btn{padding:16px 28px;font-size:13px;width:100%;justify-content:center}
+  .hero-buttons{flex-direction:column}
+  .hero-buttons .btn{width:100%}
+  /* Fix CTA band */
+  .cta-band h2{font-size:clamp(22px,6vw,36px)}
+  .cta-band p{font-size:16px}
+  .cta-band .btn-primary{width:auto}
+  /* Tighter section titles on mobile */
+  .section-title{font-size:clamp(26px,7vw,40px)}
+  /* Fix goodbye list overflow */
+  .goodbye-list li{font-size:18px}
+  .promises-list li{font-size:15px}
+  .promises-title{font-size:clamp(20px,5vw,28px)}
+  /* Why cards */
+  .why-card{padding:36px 24px}
+  .why-emoji{font-size:40px}
+  /* About card */
+  .about-card{padding:36px 24px}
+  .about-card blockquote{font-size:20px}
+  /* Service cards */
+  .service-card{padding:32px 24px}
 }
   </style>
 </head>
