@@ -3,71 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service — SinauraCo</title>
+  <title>Terms of Service — Sinaura Collectives</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20146%20146'%3E%3Crect%20width='146'%20height='146'%20fill='%23EDE9E3'/%3E%3Crect%20x='53'%20y='41'%20width='70'%20height='23'%20fill='%230A0A0A'/%3E%3Crect%20x='23'%20y='82'%20width='77'%20height='23'%20fill='%230A0A0A'/%3E%3Crect%20x='100'%20y='82'%20width='23'%20height='23'%20fill='%23C2410C'/%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --blue: #0A7AFF; --deep-blue: #0560CC; --black: #1A1A1A;
-      --dark-gray: #2D2D2D; --light-blue: #D4E8FF; --light-gray: #F5F5F5;
-      --white: #FFFFFF; --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
+      --ink:#0A0A0A; --bone:#EDE9E3; --ember:#C2410C; --graphite:#45413C;
+      --ember-deep:#9A330A; --ember-light:#E8663A; --paper:#FBFAF8;
+      --rule:rgba(10,10,10,.14); --rule-strong:rgba(10,10,10,.30);
+      --font:'Archivo','Helvetica Neue',Arial,sans-serif;
+      --font-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+      --font-counter:Georgia,'Times New Roman',serif;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); background: var(--black); color: var(--white); -webkit-font-smoothing: antialiased; }
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    body { font-family: var(--font); background: var(--bone); color: var(--graphite); -webkit-font-smoothing: antialiased; line-height: 1.55; letter-spacing: -.005em; }
+    a { color: var(--ember-deep); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .3s; }
+    a:hover { border-bottom-color: var(--ember-deep); }
 
     .nav {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-      padding: 16px 0; background: rgba(26,26,26,0.95); backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 16px 0; background: rgba(237,233,227,0.9); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--rule);
     }
     .nav .container { display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--white); text-decoration: none; }
-    .nav-logo em { font-style: normal; color: var(--blue); }
-    .nav-back { font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; font-family: var(--font-display); font-weight: 500; }
-    .nav-back:hover { color: var(--blue); text-decoration: none; }
+    .nav-logo { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; border-bottom: none; }
+    .nav-mark { width: 28px; height: 28px; display: block; flex-shrink: 0; }
+    .nav-wordmark { font-family: var(--font); font-size: 15px; font-weight: 800; letter-spacing: -.01em; text-transform: uppercase; line-height: 1; color: var(--ink); }
+    .nav-dot { color: var(--ember); }
+    .nav-back { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .14em; color: var(--graphite); text-decoration: none; font-weight: 500; border-bottom: none; }
+    .nav-back:hover { color: var(--ink); border-bottom: none; }
 
     .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
 
     .legal { padding: 140px 0 80px; }
     .legal h1 {
-      font-family: var(--font-display); font-size: clamp(32px,5vw,48px);
-      font-weight: 800; margin-bottom: 8px;
+      font-family: var(--font); font-size: clamp(32px,5vw,48px);
+      font-weight: 800; text-transform: uppercase; letter-spacing: -.045em; color: var(--ink); margin-bottom: 8px;
     }
-    .legal h1 span { color: var(--blue); }
-    .legal-date { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 48px; display: block; }
+    .legal h1 span { color: var(--ember); }
+    .legal-date { font-family: var(--font-counter); font-style: italic; font-size: 15px; color: var(--graphite); margin-bottom: 48px; display: block; }
     .legal h2 {
-      font-family: var(--font-display); font-size: 22px; font-weight: 700;
-      margin-top: 48px; margin-bottom: 16px; color: var(--blue);
+      font-family: var(--font); font-size: 22px; font-weight: 700;
+      margin-top: 48px; margin-bottom: 16px; color: var(--ink); letter-spacing: -.02em;
     }
     .legal h3 {
-      font-family: var(--font-display); font-size: 18px; font-weight: 700;
-      margin-top: 32px; margin-bottom: 12px;
+      font-family: var(--font); font-size: 18px; font-weight: 700;
+      margin-top: 32px; margin-bottom: 12px; color: var(--ink); letter-spacing: -.01em;
     }
     .legal p, .legal li {
-      font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.7); margin-bottom: 16px;
+      font-size: 16px; line-height: 1.7; color: var(--graphite); margin-bottom: 16px; max-width: 65ch;
     }
     .legal ul { padding-left: 24px; margin-bottom: 16px; }
     .legal li { margin-bottom: 8px; }
-    .legal strong { color: rgba(255,255,255,0.9); }
+    .legal strong { color: var(--ink); font-weight: 700; }
 
     .footer {
-      padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 0; border-top: 1px solid var(--rule);
     }
     .footer .container { max-width: 1200px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.4); }
+    .footer-copy { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; color: var(--graphite); }
     .footer-links { display: flex; gap: 24px; list-style: none; }
-    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); }
-    .footer-links a:hover { color: var(--blue); text-decoration: none; }
+    .footer-links a { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .14em; color: var(--graphite); border-bottom: none; }
+    .footer-links a:hover { color: var(--ember-deep); border-bottom: none; }
+
   </style>
 </head>
 <body>
   <nav class="nav">
     <div class="container" style="max-width:1200px;">
-      <a href="index.html" class="nav-logo">Sinaura<em>Co</em></a>
+      <a href="index.html" class="nav-logo" aria-label="Sinaura Collectives — home"><svg class="nav-mark" viewBox="0 0 146 146" role="img" aria-hidden="true"><rect x="53" y="41" width="70" height="23" fill="var(--ink)"/><rect x="23" y="82" width="59" height="23" fill="var(--ink)"/><rect x="100" y="82" width="23" height="23" fill="var(--ember)"/></svg><span class="nav-wordmark">SINAURA COLLECTIVES<span class="nav-dot">.</span></span></a>
       <a href="index.html" class="nav-back">← Back to Home</a>
     </div>
   </nav>
@@ -81,7 +88,7 @@
       <p>By using sinauraco.com or our services, you agree to these Terms.</p>
 
       <h2>2. Services</h2>
-      <p>SinauraCo provides creator management, marketing, and consulting services. We may modify or discontinue services at any time.</p>
+      <p>Sinaura Collectives provides creator management, marketing, and consulting services. We may modify or discontinue services at any time.</p>
 
       <h2>3. Eligibility</h2>
       <p>You must be at least 18 and legally able to enter into these Terms.</p>
@@ -98,16 +105,16 @@
       <p>Payment terms are set out in your proposal/contract. Refunds/cancellations follow our Refund & Cancellation Policy.</p>
 
       <h2>6. Intellectual Property</h2>
-      <p>All website content (text, graphics, logos, media) is owned by SinauraCo, LLC or its licensors. You may not reproduce or create derivative works without written consent.</p>
+      <p>All website content (text, graphics, logos, media) is owned by Sinaura Collectives LLC or its licensors. You may not reproduce or create derivative works without written consent.</p>
 
       <h2>7. Disclaimers</h2>
       <p>Services are provided "as is." We do not guarantee specific outcomes (e.g., growth, revenue). To the maximum extent permitted by law, we disclaim warranties of any kind.</p>
 
       <h2>8. Limitation of Liability</h2>
-      <p>To the maximum extent permitted by law, SinauraCo's total liability for any claim will not exceed the amounts paid to SinauraCo in the 12 months preceding the claim.</p>
+      <p>To the maximum extent permitted by law, Sinaura Collectives' total liability for any claim will not exceed the amounts paid to Sinaura Collectives in the 12 months preceding the claim.</p>
 
       <h2>9. Indemnity</h2>
-      <p>You agree to indemnify and hold SinauraCo harmless from claims arising from your misuse of the site/services or breach of these Terms.</p>
+      <p>You agree to indemnify and hold Sinaura Collectives harmless from claims arising from your misuse of the site/services or breach of these Terms.</p>
 
       <h2>10. Termination</h2>
       <p>We may suspend or terminate access for any breach of these Terms.</p>
@@ -122,7 +129,7 @@
       <p>Support and legal notices: <a href="mailto:contact@sinauraco.com">contact@sinauraco.com</a></p>
 
       <h3>14. Messaging Consent, Opt-In, and Communications Policy</h3>
-      <p>By providing your phone number or contact information and engaging with SinauraCo through our website, forms, or services, you expressly consent to receive communications from SinauraCo, including but not limited to SMS (text messages), email, and other electronic communications.</p>
+      <p>By providing your phone number or contact information and engaging with Sinaura Collectives through our website, forms, or services, you expressly consent to receive communications from Sinaura Collectives, including but not limited to SMS (text messages), email, and other electronic communications.</p>
 
       <p><strong>Opt-In Consent:</strong> Consent to receive messages is obtained directly from the consumer through clear and affirmative actions, which may include submitting a form, checking an opt-in box, or otherwise providing explicit agreement to receive communications. Consent is not a condition of purchase.</p>
 
@@ -157,7 +164,7 @@
 
   <footer class="footer">
     <div class="container" style="max-width:1200px;">
-      <p class="footer-copy">&copy; 2025 SinauraCo, LLC. All rights reserved.</p>
+      <p class="footer-copy">&copy; 2025 Sinaura Collectives LLC. All rights reserved.</p>
       <ul class="footer-links">
         <li><a href="privacy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms of Service</a></li>
