@@ -189,7 +189,8 @@ body::before{
 .about-feature-icon{
   width:52px;height:52px;min-width:52px;
   background:var(--paper);border:1px solid var(--rule);border-radius:0;
-  display:flex;align-items:center;justify-content:center;font-size:22px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:.08em;color:var(--ember-deep);
   transition:all .5s var(--ease-cinematic);
 }
 .about-feature:hover .about-feature-icon{border-color:var(--ink);transform:translateY(-2px)}
@@ -222,7 +223,7 @@ body::before{
   transition:transform .5s var(--ease-cinematic),border-color .5s var(--ease-cinematic);
 }
 .service-card:hover{transform:translateY(-6px);border-color:var(--ink)}
-.service-icon{font-size:28px;margin-bottom:24px;display:block;transition:transform .5s var(--ease-out-expo)}
+.service-icon{font-family:var(--font-mono);font-size:15px;font-weight:600;letter-spacing:.14em;color:var(--ember-deep);margin-bottom:20px;display:block;transition:transform .5s var(--ease-out-expo)}
 .service-card:hover .service-icon{transform:translateY(-3px)}
 .service-card h3{font-family:var(--font);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:12px;letter-spacing:-.01em}
 .service-card p{font-size:15px;line-height:1.55;color:var(--graphite);max-width:42ch}
@@ -282,7 +283,7 @@ body::before{
   position:relative;overflow:hidden;
 }
 .why-card:hover{transform:translateY(-6px);border-color:var(--ink)}
-.why-emoji{font-size:44px;margin-bottom:24px}
+.why-emoji{font-family:var(--font-mono);font-size:15px;font-weight:600;letter-spacing:.14em;color:var(--ember-deep);margin-bottom:20px}
 .why-card h3{font-family:var(--font);font-size:20px;font-weight:700;color:var(--ink);margin-bottom:12px;letter-spacing:-.01em}
 .why-card p{font-size:15px;line-height:1.55;color:var(--graphite)}
 
@@ -364,7 +365,6 @@ body::before{
 
 .form-success{display:none;text-align:center;padding:72px 32px}
 .form-success.active{display:block;animation:fadeUp .7s var(--ease-out-expo)}
-.form-success-icon{font-size:44px;margin:0 auto 20px}
 .form-success h3{font-family:var(--font);font-size:28px;font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:-.03em;margin-bottom:12px}
 .form-success p{font-size:16px;color:var(--graphite);line-height:1.6;max-width:46ch;margin:0 auto}
 
@@ -376,11 +376,6 @@ body::before{
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .contact-items{display:flex;flex-direction:column;gap:28px;margin-top:48px}
 .contact-item{display:flex;gap:16px;align-items:center}
-.contact-item-icon{
-  width:52px;height:52px;min-width:52px;
-  background:var(--paper);border:1px solid var(--rule);border-radius:0;
-  display:flex;align-items:center;justify-content:center;font-size:22px;
-}
 .contact-item h4{font-family:var(--font-mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--graphite);margin-bottom:4px}
 .contact-item p{font-size:15px;color:var(--ink)}
 .contact-item a{color:var(--ember-deep);border-bottom:1px solid transparent;transition:border-color .3s}
@@ -441,7 +436,7 @@ body::before{
   .promises-list li{font-size:15px}
   .promises-title{font-size:clamp(20px,5vw,28px)}
   .why-card{padding:36px 24px}
-  .why-emoji{font-size:40px}
+  .why-emoji{font-size:14px}
   .about-card{padding:36px 24px}
   .about-card blockquote{font-size:20px}
   .service-card{padding:32px 24px}
@@ -503,15 +498,15 @@ body::before{
         <p class="section-desc reveal">Sinaura Collectives helps creators focus on creating while we handle growth and operations. No cookie-cutter strategies — everything is tailored to your brand.</p>
         <div class="about-features stagger">
           <div class="about-feature reveal">
-            <div class="about-feature-icon">📈</div>
+            <div class="about-feature-icon">01</div>
             <div><h4>Proven Revenue Growth</h4><p>Data-driven promotions, campaigns, and upsell systems designed to increase your income consistently.</p></div>
           </div>
           <div class="about-feature reveal">
-            <div class="about-feature-icon">🤝</div>
+            <div class="about-feature-icon">02</div>
             <div><h4>Experienced Team</h4><p>Our trained team handles daily messaging, fan engagement, upsells, and relationship-building around the clock.</p></div>
           </div>
           <div class="about-feature reveal">
-            <div class="about-feature-icon">🔒</div>
+            <div class="about-feature-icon">03</div>
             <div><h4>Full Privacy & Discretion</h4><p>Confidentiality and professionalism every step of the way. Your privacy is non-negotiable.</p></div>
           </div>
         </div>
@@ -536,32 +531,32 @@ body::before{
     </div>
     <div class="services-grid stagger">
       <div class="service-card reveal">
-        <div class="service-icon">💬</div>
+        <div class="service-icon">01</div>
         <h3>Fan Management & Engagement</h3>
         <p>Our trained team handles daily messaging, upsells, and relationship-building so you can focus on content. 24/7 coverage that keeps your fans engaged.</p>
       </div>
       <div class="service-card reveal">
-        <div class="service-icon">💰</div>
+        <div class="service-icon">02</div>
         <h3>Revenue Growth Strategies</h3>
         <p>Proven promotions, campaigns, and upsell systems designed to increase your income consistently. We optimize pricing, offers, and conversion flows.</p>
       </div>
       <div class="service-card reveal">
-        <div class="service-icon">📅</div>
+        <div class="service-icon">03</div>
         <h3>Content Scheduling & Optimization</h3>
         <p>Guidance on when and how to post for maximum engagement. We plan, schedule, and analyze so every piece of content works harder for you.</p>
       </div>
       <div class="service-card reveal">
-        <div class="service-icon">📊</div>
+        <div class="service-icon">04</div>
         <h3>Ongoing Support & Reporting</h3>
         <p>Weekly updates, strategy sessions, and performance reports so you always know your progress. Full transparency, zero guesswork.</p>
       </div>
       <div class="service-card reveal">
-        <div class="service-icon">🎨</div>
+        <div class="service-icon">05</div>
         <h3>Professional Branding</h3>
         <p>Assistance with organizing your vault, structuring your offers, and building a fan experience that keeps subscribers coming back for more.</p>
       </div>
       <div class="service-card reveal">
-        <div class="service-icon">🚀</div>
+        <div class="service-icon">06</div>
         <h3>Multi-Platform Marketing</h3>
         <p>Strategic growth across Instagram, TikTok, Twitter, Reddit, and more. We drive traffic from every angle to maximize your reach and revenue.</p>
       </div>
@@ -618,17 +613,17 @@ body::before{
     </div>
     <div class="why-grid stagger">
       <div class="why-card reveal">
-        <div class="why-emoji">🎯</div>
+        <div class="why-emoji">01</div>
         <h3>No Cookie-Cutter Approach</h3>
         <p>Personalized strategies tailored to your brand, your audience, and your goals. Nothing generic — everything custom.</p>
       </div>
       <div class="why-card reveal">
-        <div class="why-emoji">🛡️</div>
+        <div class="why-emoji">02</div>
         <h3>Privacy First</h3>
         <p>Confidentiality and professionalism every step of the way. Your personal information and business details stay private and secure.</p>
       </div>
       <div class="why-card reveal">
-        <div class="why-emoji">📈</div>
+        <div class="why-emoji">03</div>
         <h3>We Only Win When You Win</h3>
         <p>Our success is tied to yours. We're invested in your growth because our business depends on your results.</p>
       </div>
@@ -806,7 +801,6 @@ body::before{
       </form>
 
       <div class="form-success" id="formSuccess">
-        <div class="form-success-icon">🚀</div>
         <h3>Application Received!</h3>
         <p>Thank you for applying to Sinaura Collectives. We review every application personally and will reach out within 48 hours. Check your email for confirmation.</p>
       </div>
@@ -824,11 +818,9 @@ body::before{
         <p class="section-desc reveal">Have questions before applying? Reach out — we'd love to hear from you.</p>
         <div class="contact-items stagger">
           <div class="contact-item reveal">
-            <div class="contact-item-icon">📧</div>
             <div><h4>Email</h4><p><a href="mailto:contact@sinauraco.com">contact@sinauraco.com</a></p></div>
           </div>
           <div class="contact-item reveal">
-            <div class="contact-item-icon">📸</div>
             <div><h4>Instagram</h4><p><a href="https://instagram.com/sinauraco" target="_blank" rel="noopener">@sinauraco</a></p></div>
           </div>
         </div>
