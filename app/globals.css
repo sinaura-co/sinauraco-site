@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ────────────────────────────────────────────────
+   Self-hosted type — no Google Fonts, no CDN.
+   Archivo is a variable file (one woff2, whole axis).
+──────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/Archivo-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ────────────────────────────────────────────────
+   Tokens — the palette lives here once; nothing
+   downstream hardcodes a hex.
+──────────────────────────────────────────────── */
+:root {
+  --ink: #0a0a0a;
+  --bone: #ede9e3;
+  --ember: #c2410c;
+  --graphite: #45413c;
+  --ember-deep: #9a330a;
+  --ember-light: #e8663a;
+  --paper: #fbfaf8;
+  /* translucent bone — the live nav's scrolled ground (.nav.scrolled) */
+  --bone-glass: rgba(237, 233, 227, 0.86);
+  /* derived neutrals — Ink at alpha for hairline rules */
+  --rule: rgba(10, 10, 10, 0.14);
+  --rule-strong: rgba(10, 10, 10, 0.3);
+  /* type stacks */
+  --font-archivo: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--bone);
+    color: var(--graphite);
+    font-family: var(--font-archivo);
+    letter-spacing: -0.005em;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--ember);
+    color: var(--paper);
+  }
+  /* Focus: ember-deep, square, 2px offset (BRAND.md a11y) */
+  :focus-visible {
+    outline: 2px solid var(--ember-deep);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Ported legal pages (/privacy, /terms) — mirrors the live legal typography
+     (legacy .legal), so the reskinned pages read exactly like the source. */
+  .legal-prose h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-archivo);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .legal-prose h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-archivo);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .legal-prose p,
+  .legal-prose li {
+    max-width: 65ch;
+    margin-bottom: 1rem;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--graphite);
+  }
+  .legal-prose ul {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    list-style: disc;
+  }
+  .legal-prose li {
+    margin-bottom: 0.5rem;
+  }
+  .legal-prose strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .legal-prose a {
+    color: var(--ember-deep);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .legal-prose a:hover {
+    border-bottom-color: var(--ember-deep);
+  }
+}
