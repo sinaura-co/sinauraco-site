@@ -17,6 +17,7 @@ const STATIC_ROUTES = [
   '/apply',
   '/faq',
   '/careers',
+  '/roadmap',
   '/privacy',
   '/terms',
 ]

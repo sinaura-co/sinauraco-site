@@ -32,18 +32,19 @@ import {
 // pull-quotes (ember-light on ink, per the contrast rule), and the single bg-ember
 // CTA band.
 //
-// NOINDEX until owner content sign-off (mirrors partner-program/referrals): the
-// page makes earnings-adjacent + service claims. The mock's one unsourced growth
-// multiple ("3–10x") was softened to a hedged, numberless line in content/roadmap.ts
-// (CLAUDE.md: never publish an unsourced number). To publish: flip robots to index,
-// add '/roadmap' to sitemap.ts, and link it from the nav/footer. See HANDOFF.
+// INDEXED at launch (owner content sign-off): linked from /creators + footer and
+// listed in sitemap.ts. The mock's one unsourced growth multiple ("3–10x") was
+// softened to a hedged, numberless line in content/roadmap.ts (CLAUDE.md: never
+// publish an unsourced number). Note: the "we build & host a domain" service line
+// is now on the indexed live site — soften it here if it ever stops being accurate.
 const DESCRIPTION =
   'The full operating system we run for the creators we manage — weekly structure, platform strategy, funnel infrastructure, and a realistic timeline.'
 
-export const metadata: Metadata = {
-  ...pageMetadata({ title: 'The Creator Roadmap', description: DESCRIPTION, path: '/roadmap' }),
-  robots: { index: false, follow: false },
-}
+export const metadata: Metadata = pageMetadata({
+  title: 'The Creator Roadmap',
+  description: DESCRIPTION,
+  path: '/roadmap',
+})
 
 const crumbs: Crumb[] = [
   { name: 'Home', route: '/' },
