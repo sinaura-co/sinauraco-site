@@ -1,0 +1,22 @@
+/node_modules
+/.next
+/out
+/build
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+.env*
+!.env.example
+.vercel
+.claude
+
+# Internal build specs and competitor-audit material — never commit (Amendment 01 §5).
+# Files stay on disk for the agent to read; they must not enter public history.
+/docs
+
+# Internal build memory — kept LOCAL-ONLY per owner decision (16 Aug 2026): the
+# repo is public, and these are candid strategy notes. They stay on disk for the
+# agent to read, but must not enter the public repo. (This overrides the earlier
+# "keep the memory committed" rule for this public-repo project.)
+CLAUDE.md
+HANDOFF.md
