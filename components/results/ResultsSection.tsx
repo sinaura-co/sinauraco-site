@@ -12,8 +12,15 @@ import './results.css'
 // input), which is why dangerouslySetInnerHTML is safe here. The source's IIFE is
 // ported into the effect below (empty deps); every listener is bound with an
 // AbortController signal and the IntersectionObserver is disconnected on cleanup, so
-// re-runs (StrictMode) and unmount tear everything down. The only change from source
-// is the CSS's --sr-mono → the site's --font-mono (IBM Plex Mono); see results.css.
+// re-runs (StrictMode) and unmount tear everything down. Two intentional deviations
+// from source: (1) the CSS's --sr-mono → the site's --font-mono (IBM Plex Mono; see
+// results.css); (2) the three .sr-c-delta <p>s server-render their FINAL value
+// (+7,247% / +1,400% / +400%) instead of the source's +0%, so crawlers / no-JS readers
+// see the real per-model deltas. JS still counts up from 0 — play() reads data-c, never
+// the initial text — and the animation's last frame equals the static value, so motion
+// is unchanged and there is no end-of-count jump. (The per-bar $ spans still start at $0;
+// the dollar figures are already server-rendered in the case headings, subs, and bar
+// aria-labels, so SEO already has them.)
 const RESULTS_INNER_HTML = `
   <div class="sr-res-wrap">
 
@@ -78,7 +85,7 @@ const RESULTS_INNER_HTML = `
           </div>
 
           <footer class="sr-c-foot">
-            <p class="sr-c-delta" data-c="7247" data-pre="+" data-suf="%" data-plain>+0%</p>
+            <p class="sr-c-delta" data-c="7247" data-pre="+" data-suf="%" data-plain>+7,247%</p>
             <p class="sr-c-sub">$30,964.53 earned across the four months</p>
           </footer>
         </article>
@@ -108,7 +115,7 @@ const RESULTS_INNER_HTML = `
           </div>
 
           <footer class="sr-c-foot">
-            <p class="sr-c-delta" data-c="1400" data-pre="+" data-suf="%" data-plain>+0%</p>
+            <p class="sr-c-delta" data-c="1400" data-pre="+" data-suf="%" data-plain>+1,400%</p>
             <p class="sr-c-sub">First month under management</p>
           </footer>
         </article>
@@ -138,7 +145,7 @@ const RESULTS_INNER_HTML = `
           </div>
 
           <footer class="sr-c-foot">
-            <p class="sr-c-delta" data-c="400" data-pre="+" data-suf="%" data-plain>+0%</p>
+            <p class="sr-c-delta" data-c="400" data-pre="+" data-suf="%" data-plain>+400%</p>
             <p class="sr-c-sub">Monthly earnings under management</p>
           </footer>
         </article>
