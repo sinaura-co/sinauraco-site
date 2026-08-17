@@ -11,6 +11,7 @@ import { Reveal } from '@/components/ui/Reveal'
 import { Counter } from '@/components/ui/Counter'
 import { WhatYouGetList } from '@/components/home/WhatYouGetList'
 import { SayGoodbyeList } from '@/components/home/SayGoodbyeList'
+import { ResultsSection } from '@/components/results/ResultsSection'
 
 const HOME_DESCRIPTION =
   'Creator management, growth and ops in one operation — Sinaura runs the brand side so you keep more of what you earn. No upfront fees, every term in writing.'
@@ -249,6 +250,9 @@ export default function Home() {
           </ul>
         </div>
       </section>
+
+      {/* ── RESULTS ── proof, before the commitments' risk-reversal (owner call) ── */}
+      <ResultsSection />
 
       {/* ── COMMITMENTS ── */}
       <section id="commitments" className="scroll-mt-24 border-b border-rule">
