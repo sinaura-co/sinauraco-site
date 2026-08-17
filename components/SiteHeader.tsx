@@ -54,14 +54,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <div className="flex items-center gap-4">
-          <Link
-            href="/apply"
-            onClick={() => setOpen(false)}
-            className="hidden bg-ink px-[18px] py-[9px] font-mono text-[11px] uppercase tracking-label text-bone transition-transform duration-300 hover:-translate-y-px sm:inline-flex"
-          >
-            Apply Now
-          </Link>
+        <div className="flex items-center">
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -88,7 +81,7 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
-            <li className="pt-5 sm:hidden">
+            <li className="pt-5">
               <Link
                 href="/apply"
                 onClick={() => setOpen(false)}

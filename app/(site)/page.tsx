@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/Button'
 import { GuideCard } from '@/components/content/GuideCard'
 import { Reveal } from '@/components/ui/Reveal'
 import { Counter } from '@/components/ui/Counter'
+import { WhatYouGetList } from '@/components/home/WhatYouGetList'
+import { SayGoodbyeList } from '@/components/home/SayGoodbyeList'
 
 const HOME_DESCRIPTION =
   'Creator management, growth and ops in one operation — Sinaura runs the brand side so you keep more of what you earn. No upfront fees, every term in writing.'
@@ -139,8 +141,8 @@ export default function Home() {
           <div className="max-w-[860px]">
             <SectionLabel>Creator management agency</SectionLabel>
             <h1 className="mt-8 font-sans text-[clamp(2.75rem,7.5vw,5.5rem)] font-bold uppercase leading-[0.98] tracking-display text-ink">
-              Maximize earnings.{' '}
-              <em className="not-italic text-ember">Grow your brand.</em>
+              <span className="block">Maximize earnings.</span>
+              <em className="block not-italic text-ember">Grow your brand.</em>
             </h1>
             <p className="mt-8 max-w-measure text-xl leading-[1.5] tracking-body text-graphite">
               Full-service growth, engagement, and monetization &mdash; so you can focus on creating
@@ -287,29 +289,11 @@ export default function Home() {
           <div className="mt-16 grid gap-12 md:grid-cols-2 md:gap-16">
             <Reveal>
               <h4 className="font-sans text-2xl font-bold tracking-tight text-ink">What you get</h4>
-              <ul className="mt-6 divide-y divide-rule border-y border-rule">
-                {WHAT_YOU_GET.map((item) => (
-                  <li key={item} className="flex items-baseline gap-4 py-4 text-[17px] text-graphite">
-                    <span aria-hidden className="font-bold text-ink">
-                      &#10003;
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <WhatYouGetList items={WHAT_YOU_GET} />
             </Reveal>
             <Reveal delay={100}>
               <h4 className="font-sans text-2xl font-bold tracking-tight text-ink">Say goodbye to</h4>
-              <ul className="mt-6 flex flex-col gap-4">
-                {GOODBYES.map((g) => (
-                  <li
-                    key={g}
-                    className="font-sans text-[22px] font-bold text-ember line-through decoration-rule-strong decoration-2"
-                  >
-                    No more {g}
-                  </li>
-                ))}
-              </ul>
+              <SayGoodbyeList items={GOODBYES} />
             </Reveal>
           </div>
         </div>
