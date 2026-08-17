@@ -43,6 +43,13 @@ const config: Config = {
       maxWidth: {
         measure: '65ch', // body copy line-length cap
       },
+      transitionTimingFunction: {
+        // Ported from the original site's motion system (legacy/index.html) so the
+        // rebuild's scroll reveals carry the same signature easing.
+        'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'out-quart': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        cinematic: 'cubic-bezier(0.22, 0.61, 0.36, 1)',
+      },
     },
   },
   plugins: [],

@@ -8,6 +8,7 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 import { Button } from '@/components/ui/Button'
 import { GuideCard } from '@/components/content/GuideCard'
 import { WhatYouKeep } from '@/components/WhatYouKeep'
+import { ServicesNav } from '@/components/services/ServicesNav'
 
 const DESCRIPTION =
   'Management, growth, and operations for creators — sold as one, run as one operation. No upfront fees, no hidden markups, every term in writing.'
@@ -28,7 +29,7 @@ const LINES: { id: string; label: string; title: string; blurb: string; items: s
     id: 'management',
     label: 'Management',
     title: 'The day-to-day, handled',
-    blurb: 'The fan-facing grind that eats your week — messaging, scheduling, offers — handled around the clock by a trained team, so you’re free to focus on content.',
+    blurb: 'Messaging, scheduling, and offers — covered around the clock.',
     items: [
       '24/7 fan management that keeps fans engaged',
       'Daily messaging that turns fans into regulars',
@@ -40,7 +41,7 @@ const LINES: { id: string; label: string; title: string; blurb: string; items: s
     id: 'growth',
     label: 'Growth',
     title: 'More revenue from the audience you have',
-    blurb: 'We turn the attention you already have into income — sharper pricing, smarter promotion, traffic from every angle, and retention that compounds.',
+    blurb: 'Sharper pricing, smarter promotion, retention that compounds.',
     items: [
       'Revenue and promotion strategy built to scale',
       'Pricing and offers tuned to lift revenue',
@@ -52,7 +53,7 @@ const LINES: { id: string; label: string; title: string; blurb: string; items: s
     id: 'ops',
     label: 'Ops',
     title: 'The infrastructure you can trust',
-    blurb: 'The part most agencies keep vague — and the one we lead with: full visibility into your numbers, account access that stays yours, and terms in writing you can hold us to.',
+    blurb: 'Your numbers visible, your access intact, every term in writing.',
     items: [
       'Weekly reports on your numbers — no guesswork',
       'Co-manager access only — never your password',
@@ -107,28 +108,18 @@ export default function ServicesPage() {
             </>
           }
         />
-
-        <nav aria-label="On this page" className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
-          {[
-            ...LINES.map((l) => ({ id: l.id, label: l.label })),
-            { id: 'fees', label: 'How we are paid' },
-            { id: 'what-you-keep', label: 'What you keep' },
-          ].map(
-            (l) => (
-              <a
-                key={l.id}
-                href={`#${l.id}`}
-                className="font-mono text-[12px] uppercase tracking-label text-graphite underline decoration-from-font underline-offset-4 transition-colors hover:text-ink"
-              >
-                {l.label}
-              </a>
-            ),
-          )}
-        </nav>
       </div>
 
+      <ServicesNav
+        sections={[
+          ...LINES.map((l) => ({ id: l.id, label: l.label })),
+          { id: 'fees', label: 'How we are paid' },
+          { id: 'what-you-keep', label: 'What you keep' },
+        ]}
+      />
+
       {LINES.map((line) => (
-        <section key={line.id} id={line.id} className="mt-16 scroll-mt-24 border-t border-rule pt-10">
+        <section key={line.id} id={line.id} className="mt-16 scroll-mt-32 border-t border-rule pt-10">
           <SectionLabel as="h2">{line.label}</SectionLabel>
           <h3 className="mt-5 max-w-measure font-sans text-2xl font-bold tracking-tight text-ink md:text-3xl">
             {line.title}
@@ -144,7 +135,7 @@ export default function ServicesPage() {
         </section>
       ))}
 
-      <section id="fees" className="mt-16 scroll-mt-24 border-t-2 border-ink pt-10">
+      <section id="fees" className="mt-16 scroll-mt-32 border-t-2 border-ink pt-10">
         <SectionLabel as="h2">How we are paid</SectionLabel>
         <h3 className="mt-5 max-w-measure font-sans text-2xl font-bold tracking-tight text-ink md:text-3xl">
           How the fee works — and what you keep
@@ -166,7 +157,7 @@ export default function ServicesPage() {
         </ul>
       </section>
 
-      <section id="what-you-keep" className="mt-16 scroll-mt-24 border-t border-rule pt-10">
+      <section id="what-you-keep" className="mt-16 scroll-mt-32 border-t border-rule pt-10">
         <SectionLabel as="h2">What you keep</SectionLabel>
         <h3 className="mt-5 max-w-measure font-sans text-2xl font-bold tracking-tight text-ink md:text-3xl">
           No upfront fees. Just the math.

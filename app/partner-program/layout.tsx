@@ -31,11 +31,6 @@ export default function PartnerLayout({ children }: { children: ReactNode }) {
       <main className="flex-1">{children}</main>
 
       <SiteFooter />
-
-      {/* Reveal animations are progressive enhancement — force content visible if JS is off. */}
-      <noscript>
-        <style>{`[data-reveal]{opacity:1 !important;transform:none !important}`}</style>
-      </noscript>
     </div>
   )
 }

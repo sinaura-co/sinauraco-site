@@ -7,6 +7,8 @@ import { organizationGraph } from '@/lib/seo/schema'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { Button } from '@/components/ui/Button'
 import { GuideCard } from '@/components/content/GuideCard'
+import { Reveal } from '@/components/ui/Reveal'
+import { Counter } from '@/components/ui/Counter'
 
 const HOME_DESCRIPTION =
   'Creator management, growth and ops in one operation — Sinaura runs the brand side so you keep more of what you earn. No upfront fees, every term in writing.'
@@ -30,11 +32,19 @@ export const metadata: Metadata = {
 // "Revenue growth", and the hero's "100% Confidential" → the verifiable "0
 // Upfront fees". Everything else keeps the live energy. Content lives in data
 // arrays (plain strings need no JSX escaping); display headings use entities.
+//
+// Motion (§A/§B): sections below the fold reveal on scroll via <Reveal>; figures
+// count up on view via <Counter>. The hero paints immediately (it is the LCP
+// element) — only its figures animate.
 
-const HERO_STATS = [
+// `from` overrides a figure's starting count — fees run 100 → 0 to dramatize
+// dropping to nothing; everything else counts up from 0.
+type Stat = { num: string; label: string; from?: number }
+
+const HERO_STATS: Stat[] = [
   { num: '24/7', label: 'Fan management' },
   { num: '6+', label: 'Platforms covered' },
-  { num: '0', label: 'Upfront fees' },
+  { num: '0', label: 'Upfront fees', from: 100 },
 ]
 
 const ABOUT_FEATURES = [
@@ -82,7 +92,7 @@ const SERVICES = [
   },
 ]
 
-const COMMIT_STATS = [
+const COMMIT_STATS: Stat[] = [
   { num: '3', label: 'Business days to review' },
   { num: '30', label: 'Day exit notice' },
   { num: '100%', label: 'Account ownership' },
@@ -123,14 +133,14 @@ export default function Home() {
       {/* Organization @graph declared once on the homepage; other pages reference by @id (§7.1). */}
       <JsonLd data={organizationGraph()} />
 
-      {/* ── HERO ── */}
+      {/* ── HERO ── paints immediately (LCP); only the figures animate ── */}
       <section className="border-b border-rule">
         <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
           <div className="max-w-[860px]">
             <SectionLabel>Creator management agency</SectionLabel>
             <h1 className="mt-8 font-sans text-[clamp(2.75rem,7.5vw,5.5rem)] font-bold uppercase leading-[0.98] tracking-display text-ink">
-              We help creators{' '}
-              <em className="not-italic text-ember">maximize their earnings &amp; brand</em>
+              Maximize earnings.{' '}
+              <em className="not-italic text-ember">Grow your brand.</em>
             </h1>
             <p className="mt-8 max-w-measure text-xl leading-[1.5] tracking-body text-graphite">
               Full-service growth, engagement, and monetization &mdash; so you can focus on creating
@@ -148,7 +158,7 @@ export default function Home() {
               {HERO_STATS.map((s) => (
                 <div key={s.label}>
                   <dt className="font-sans text-4xl font-extrabold tracking-tight text-ink tabular">
-                    {s.num}
+                    <Counter value={s.num} from={s.from} />
                   </dt>
                   <dd className="mt-2 font-mono text-[11px] uppercase tracking-label text-graphite">
                     {s.label}
@@ -164,43 +174,49 @@ export default function Home() {
       <section className="border-b border-rule">
         <div className="mx-auto grid max-w-[1200px] gap-12 px-6 py-20 md:grid-cols-2 md:gap-20 md:py-28">
           <div>
-            <SectionLabel as="h2">Who we are</SectionLabel>
-            <h3 className="mt-5 font-sans text-[clamp(1.9rem,4vw,3rem)] font-bold leading-[1.06] tracking-long text-ink">
-              Built for creators who mean <em className="not-italic text-ember">business</em>
-            </h3>
-            <p className="mt-5 max-w-measure text-lg leading-[1.5] text-graphite">
-              Sinaura Collectives helps creators focus on creating while we handle growth and
-              operations. No cookie-cutter strategies &mdash; everything is tailored to your brand.
-            </p>
+            <Reveal>
+              <SectionLabel as="h2">Who we are</SectionLabel>
+              <h3 className="mt-5 font-sans text-[clamp(1.9rem,4vw,3rem)] font-bold leading-[1.06] tracking-long text-ink">
+                Built for creators who mean <em className="not-italic text-ember">business</em>
+              </h3>
+              <p className="mt-5 max-w-measure text-lg leading-[1.5] text-graphite">
+                Sinaura Collectives helps creators focus on creating while we handle growth and
+                operations. No cookie-cutter strategies &mdash; everything is tailored to your brand.
+              </p>
+            </Reveal>
             <div className="mt-10 flex flex-col gap-7">
-              {ABOUT_FEATURES.map((f) => (
-                <div key={f.n} className="flex gap-5">
-                  <div className="flex h-[52px] w-[52px] min-w-[52px] items-center justify-center border border-rule bg-paper font-mono text-sm font-semibold tracking-wider text-ember-deep">
-                    {f.n}
+              {ABOUT_FEATURES.map((f, i) => (
+                <Reveal key={f.n} delay={i * 80}>
+                  <div className="flex gap-5">
+                    <div className="flex h-[52px] w-[52px] min-w-[52px] items-center justify-center border border-rule bg-paper font-mono text-sm font-semibold tracking-wider text-ember-deep">
+                      {f.n}
+                    </div>
+                    <div>
+                      <h4 className="font-sans text-[17px] font-bold tracking-tight text-ink">
+                        {f.title}
+                      </h4>
+                      <p className="mt-1 leading-[1.55] text-graphite">{f.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-sans text-[17px] font-bold tracking-tight text-ink">
-                      {f.title}
-                    </h4>
-                    <p className="mt-1 leading-[1.55] text-graphite">{f.desc}</p>
-                  </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
 
           <div className="md:self-center">
-            <figure className="relative overflow-hidden border border-rule bg-paper p-10 md:p-12">
-              <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-ink" />
-              <blockquote className="font-sans text-[26px] font-bold leading-[1.3] tracking-tight text-ink">
-                &ldquo;We don&rsquo;t just manage accounts &mdash; we build empires.&rdquo;
-              </blockquote>
-              <figcaption className="mt-5 font-counter text-[15px] italic leading-[1.65] text-graphite">
-                Sinaura Collectives operates as a dedicated creator management agency. We review all
-                applications with the highest level of confidentiality to ensure your personal
-                information and business details remain private and secure.
-              </figcaption>
-            </figure>
+            <Reveal delay={120}>
+              <figure className="relative overflow-hidden border border-rule bg-paper p-10 md:p-12">
+                <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-ink" />
+                <blockquote className="font-sans text-[26px] font-bold leading-[1.3] tracking-tight text-ink">
+                  &ldquo;We don&rsquo;t just manage accounts &mdash; we build empires.&rdquo;
+                </blockquote>
+                <figcaption className="mt-5 font-counter text-[15px] italic leading-[1.65] text-graphite">
+                  Sinaura Collectives operates as a dedicated creator management agency. We review all
+                  applications with the highest level of confidentiality to ensure your personal
+                  information and business details remain private and secure.
+                </figcaption>
+              </figure>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -208,7 +224,7 @@ export default function Home() {
       {/* ── SERVICES ── */}
       <section className="border-b border-rule">
         <div className="mx-auto max-w-[1200px] px-6 py-20 md:py-28">
-          <div className="mx-auto max-w-measure text-center">
+          <Reveal className="mx-auto max-w-measure text-center">
             <SectionLabel as="h2" className="justify-center">
               What we do
             </SectionLabel>
@@ -219,11 +235,13 @@ export default function Home() {
               From content planning to fan engagement &mdash; we&rsquo;ve got every angle covered so
               you can focus on what you do best.
             </p>
-          </div>
+          </Reveal>
           <ul className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s, i) => (
               <li key={s.title}>
-                <GuideCard index={String(i + 1).padStart(2, '0')} title={s.title} desc={s.desc} />
+                <Reveal delay={i * 60} className="h-full">
+                  <GuideCard index={String(i + 1).padStart(2, '0')} title={s.title} desc={s.desc} />
+                </Reveal>
               </li>
             ))}
           </ul>
@@ -233,7 +251,7 @@ export default function Home() {
       {/* ── COMMITMENTS ── */}
       <section id="commitments" className="scroll-mt-24 border-b border-rule">
         <div className="mx-auto max-w-[1200px] px-6 py-20 md:py-28">
-          <div className="mx-auto max-w-measure text-center">
+          <Reveal className="mx-auto max-w-measure text-center">
             <SectionLabel as="h2" className="justify-center">
               Commitments
             </SectionLabel>
@@ -243,30 +261,31 @@ export default function Home() {
             <p className="mt-5 text-lg leading-[1.5] text-graphite">
               Commitments you can hold us to, stated before you apply &mdash; not projections.
             </p>
-          </div>
+          </Reveal>
 
           <ul className="mt-14 grid grid-cols-2 gap-5 lg:grid-cols-4">
-            {COMMIT_STATS.map((s) => (
-              <li
-                key={s.label}
-                className="group relative overflow-hidden border border-rule bg-paper p-8 text-center transition-all duration-500 hover:-translate-y-1.5 hover:border-ink"
-              >
-                <div className="font-sans text-5xl font-extrabold tracking-tight text-ink tabular">
-                  {s.num}
-                </div>
-                <div className="mt-3 font-mono text-[11px] uppercase tracking-label text-graphite">
-                  {s.label}
-                </div>
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-ink transition-transform duration-500 group-hover:scale-x-100"
-                />
+            {COMMIT_STATS.map((s, i) => (
+              <li key={s.label}>
+                <Reveal delay={i * 70} className="h-full">
+                  <div className="group relative h-full overflow-hidden border border-rule bg-paper p-8 text-center transition-all duration-500 hover:-translate-y-1.5 hover:border-ink">
+                    <div className="font-sans text-5xl font-extrabold tracking-tight text-ink tabular">
+                      <Counter value={s.num} from={s.from} />
+                    </div>
+                    <div className="mt-3 font-mono text-[11px] uppercase tracking-label text-graphite">
+                      {s.label}
+                    </div>
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-ink transition-transform duration-500 group-hover:scale-x-100"
+                    />
+                  </div>
+                </Reveal>
               </li>
             ))}
           </ul>
 
           <div className="mt-16 grid gap-12 md:grid-cols-2 md:gap-16">
-            <div>
+            <Reveal>
               <h4 className="font-sans text-2xl font-bold tracking-tight text-ink">What you get</h4>
               <ul className="mt-6 divide-y divide-rule border-y border-rule">
                 {WHAT_YOU_GET.map((item) => (
@@ -278,8 +297,8 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div>
+            </Reveal>
+            <Reveal delay={100}>
               <h4 className="font-sans text-2xl font-bold tracking-tight text-ink">Say goodbye to</h4>
               <ul className="mt-6 flex flex-col gap-4">
                 {GOODBYES.map((g) => (
@@ -291,7 +310,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -299,7 +318,7 @@ export default function Home() {
       {/* ── WHY ── */}
       <section className="border-b border-rule">
         <div className="mx-auto max-w-[1200px] px-6 py-20 md:py-28">
-          <div className="mx-auto max-w-measure text-center">
+          <Reveal className="mx-auto max-w-measure text-center">
             <SectionLabel as="h2" className="justify-center">
               Why Sinaura Collectives
             </SectionLabel>
@@ -310,22 +329,25 @@ export default function Home() {
               We&rsquo;re not just another agency. We&rsquo;re your dedicated growth partner with a
               personalized approach to everything we do.
             </p>
-          </div>
+          </Reveal>
           <ul className="mt-14 grid gap-5 md:grid-cols-3">
-            {WHY.map((w) => (
-              <li
-                key={w.n}
-                className="group relative overflow-hidden border border-rule bg-paper p-9 text-center transition-all duration-500 hover:-translate-y-1.5 hover:border-ink"
-              >
-                <span className="font-mono text-[13px] font-semibold uppercase tracking-label text-ember-deep">
-                  {w.n}
-                </span>
-                <h4 className="mt-4 font-sans text-xl font-bold tracking-tight text-ink">{w.title}</h4>
-                <p className="mt-3 leading-[1.55] text-graphite">{w.desc}</p>
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-ink transition-transform duration-500 group-hover:scale-x-100"
-                />
+            {WHY.map((w, i) => (
+              <li key={w.n}>
+                <Reveal delay={i * 70} className="h-full">
+                  <div className="group relative h-full overflow-hidden border border-rule bg-paper p-9 text-center transition-all duration-500 hover:-translate-y-1.5 hover:border-ink">
+                    <span className="font-mono text-[13px] font-semibold uppercase tracking-label text-ember-deep">
+                      {w.n}
+                    </span>
+                    <h4 className="mt-4 font-sans text-xl font-bold tracking-tight text-ink">
+                      {w.title}
+                    </h4>
+                    <p className="mt-3 leading-[1.55] text-graphite">{w.desc}</p>
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-ink transition-transform duration-500 group-hover:scale-x-100"
+                    />
+                  </div>
+                </Reveal>
               </li>
             ))}
           </ul>
@@ -335,22 +357,24 @@ export default function Home() {
       {/* ── CTA BAND ── the one ember composition ── */}
       <section className="bg-ember">
         <div className="mx-auto max-w-[1200px] px-6 py-24 text-center md:py-28">
-          <h2 className="font-sans text-[clamp(2rem,5vw,3.5rem)] font-extrabold uppercase leading-[1.02] tracking-long text-ink">
-            Ready to scale your brand?
-          </h2>
-          <p className="mx-auto mt-5 max-w-measure text-lg leading-[1.5] text-paper">
-            Join Sinaura Collectives and let us handle the rest. Apply now and see what&rsquo;s
-            possible.
-          </p>
-          <Link
-            href="/apply"
-            className="group mt-10 inline-flex items-center gap-2.5 border border-paper bg-paper px-10 py-[18px] font-sans text-[13px] font-bold uppercase tracking-[0.14em] text-ink transition-all duration-500 hover:-translate-y-0.5 hover:bg-bone"
-          >
-            Apply now
-            <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1.5">
-              &rarr;
-            </span>
-          </Link>
+          <Reveal>
+            <h2 className="font-sans text-[clamp(2rem,5vw,3.5rem)] font-extrabold uppercase leading-[1.02] tracking-long text-ink">
+              Ready to scale your brand?
+            </h2>
+            <p className="mx-auto mt-5 max-w-measure text-lg leading-[1.5] text-paper">
+              Join Sinaura Collectives and let us handle the rest. Apply now and see what&rsquo;s
+              possible.
+            </p>
+            <Link
+              href="/apply"
+              className="group mt-10 inline-flex items-center gap-2.5 border border-paper bg-paper px-10 py-[18px] font-sans text-[13px] font-bold uppercase tracking-[0.14em] text-ink transition-all duration-500 hover:-translate-y-0.5 hover:bg-bone"
+            >
+              Apply now
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1.5">
+                &rarr;
+              </span>
+            </Link>
+          </Reveal>
         </div>
       </section>
     </main>

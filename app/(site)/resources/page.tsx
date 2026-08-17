@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 import { getDocBySlug } from '@/lib/content'
 import { HUB_META } from '@/content/hubs'
+import { RESOURCE_CATEGORIES } from '@/content/resourceCategories'
 import { pageMetadata } from '@/lib/seo/metadata'
 import { JsonLd } from '@/components/JsonLd'
 import { breadcrumbSchema } from '@/lib/seo/schema'
 import { Breadcrumbs, type Crumb } from '@/components/content/Breadcrumbs'
 import { SectionLabel } from '@/components/ui/SectionLabel'
-import { GuideCard } from '@/components/content/GuideCard'
+import { ResourceFilter } from '@/components/resources/ResourceFilter'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Resources',
@@ -30,6 +31,22 @@ const crumbs: Crumb[] = [
 ]
 
 export default function ResourcesIndex() {
+  // Card data is assembled on the server (getDocBySlug reads the MDX) and handed
+  // to the client filter as plain serializable values.
+  const items = HUB_META.map((hub, i) => {
+    const doc = getDocBySlug(hub.slug)
+    const live = Boolean(doc && doc.type === 'hub')
+    return {
+      slug: hub.slug,
+      index: String(i + 1).padStart(2, '0'),
+      question: hub.question,
+      title: hub.title,
+      category: hub.category,
+      href: live ? `/resources/${hub.slug}` : undefined,
+      updated: live && doc ? fmt(doc.dateModified) : undefined,
+    }
+  })
+
   return (
     <main className="mx-auto max-w-[1200px] px-6 py-16 md:py-24">
       <JsonLd data={breadcrumbSchema(crumbs)} />
@@ -46,31 +63,9 @@ export default function ResourcesIndex() {
         </p>
       </header>
 
-      <ul className="mt-14 grid gap-5 sm:grid-cols-2">
-        {HUB_META.map((hub, i) => {
-          const doc = getDocBySlug(hub.slug)
-          const live = Boolean(doc && doc.type === 'hub')
-          return (
-            <li key={hub.slug}>
-              <GuideCard
-                href={live ? `/resources/${hub.slug}` : undefined}
-                index={String(i + 1).padStart(2, '0')}
-                eyebrow={hub.question}
-                title={hub.title}
-                footer={
-                  live && doc ? (
-                    <span className="text-ember-deep">
-                      Sinaura Collectives · Updated {fmt(doc.dateModified)} &rarr;
-                    </span>
-                  ) : (
-                    <span className="text-rule-strong">In progress</span>
-                  )
-                }
-              />
-            </li>
-          )
-        })}
-      </ul>
+      <div className="mt-14">
+        <ResourceFilter items={items} categories={RESOURCE_CATEGORIES} />
+      </div>
     </main>
   )
 }

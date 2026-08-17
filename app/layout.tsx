@@ -47,7 +47,13 @@ export default function RootLayout({
         {/* AI-file discovery link (BUILD_SPEC §10.2). */}
         <link rel="alternate" type="text/plain" href={`${site.url}/llms.txt`} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Reveal animations are progressive enhancement — force content visible if JS is off. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+      </body>
     </html>
   )
 }
