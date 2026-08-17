@@ -140,7 +140,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
           <div className="max-w-[860px]">
             <SectionLabel>Creator management agency</SectionLabel>
-            <h1 className="mt-8 font-sans text-[clamp(2.75rem,7.5vw,5.5rem)] font-bold uppercase leading-[0.98] tracking-display text-ink">
+            <h1 className="mt-8 font-sans text-[clamp(2.75rem,7.5vw,5rem)] font-bold uppercase leading-[0.98] tracking-display text-ink">
               <span className="block">Maximize earnings.</span>
               <em className="block not-italic text-ember">Grow your brand.</em>
             </h1>
