@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import { site } from '@/content/site'
 
 // The /contact message form, ported from the live site (Formspree action
@@ -13,6 +13,15 @@ const FORMSPREE = 'https://formspree.io/f/xwvzyryz'
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>('idle')
+  const [topic, setTopic] = useState<'page-audit' | 'agency' | null>(null)
+
+  // Optional ?topic= from the URL (client-only, like the calculator) sets the
+  // Formspree subject and tailors the prompts — e.g. /contact?topic=page-audit
+  // from the /services CTAs. No param = the default subject; fully backward-compatible.
+  useEffect(() => {
+    const t = new URLSearchParams(window.location.search).get('topic')
+    if (t === 'page-audit' || t === 'agency') setTopic(t)
+  }, [])
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -46,12 +55,31 @@ export function ContactForm() {
     )
   }
 
+  const subject =
+    topic === 'page-audit'
+      ? 'Page audit request — sinauraco.com'
+      : topic === 'agency'
+        ? 'Agency partnership enquiry — sinauraco.com'
+        : 'New enquiry — sinauraco.com'
+  const messagePlaceholder =
+    topic === 'page-audit'
+      ? 'Share your page link and where you think conversations are being lost — we’ll take a look.'
+      : topic === 'agency'
+        ? 'Tell us about your agency and the chatting support you’re looking for.'
+        : 'How can we help?'
+
   const field =
     'mt-2 w-full border border-rule-strong bg-bone px-4 py-3 text-ink outline-none transition-colors placeholder:text-graphite placeholder:opacity-50 focus:border-ember-deep'
   const label = 'block font-mono text-[11px] font-semibold uppercase tracking-label text-ink'
 
   return (
     <form onSubmit={handleSubmit} className="border border-rule bg-paper p-7 md:p-8">
+      <input type="hidden" name="_subject" value={subject} readOnly />
+      {topic && (
+        <p className="mb-6 border-b border-rule pb-4 font-mono text-[11px] font-semibold uppercase tracking-label text-ember-deep">
+          {topic === 'page-audit' ? 'Requesting a page audit' : 'Agency partnerships'}
+        </p>
+      )}
       <div className="space-y-5">
         <div>
           <label htmlFor="cf-name" className={label}>
@@ -89,7 +117,7 @@ export function ContactForm() {
             name="message"
             required
             rows={5}
-            placeholder="How can we help?"
+            placeholder={messagePlaceholder}
             className={`${field} resize-y`}
           />
         </div>
