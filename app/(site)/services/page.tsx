@@ -201,7 +201,41 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── 3 · HOW WE RUN IT ── (anchor target for "See how we work") ── */}
+      {/* ── 3 · PACKAGES (the services) ── carousel (one ember: the active dot) + separate Card 4 ── */}
+      <section className="border-b border-rule">
+        <div className={`${CONTAINER} py-20 md:py-28`}>
+          <SectionLabel as="h2">Where to start</SectionLabel>
+          <p className={`mt-8 ${PROSE}`}>
+            Four ways to work with us. Most creators start narrow and widen once the inbox is
+            producing.
+          </p>
+
+          <PackagesCarousel />
+
+          {/* Card 4 — a different buyer; deliberately set apart from the carousel */}
+          <div className="mt-16 max-w-[44rem] border border-rule-strong bg-bone p-8 md:p-10">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-label text-graphite">
+              04 &mdash; For agencies, not creators
+            </p>
+            <h3 className="mt-4 font-sans text-2xl font-bold uppercase tracking-display text-ink">
+              Chatting Bench
+            </h3>
+            <p className="mt-3 max-w-measure leading-[1.55] text-graphite">
+              A trained chatting team working inside your existing systems, under your brand, with a
+              team lead, quality scoring, and shift reporting.
+            </p>
+            <Link
+              href="/contact?topic=agency"
+              className="mt-6 inline-flex items-center gap-2 self-start border-b border-ink pb-1 font-mono text-[11px] font-semibold uppercase tracking-label text-ink transition-colors duration-200 hover:border-ember-deep hover:text-ember-deep"
+            >
+              Talk to us about agency partnerships
+              <span aria-hidden>&rarr;</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4 · HOW WE RUN IT ── (anchor target for "See how we work") ── */}
       <section id="how-we-run-it" className="scroll-mt-24 border-b border-rule">
         <div className={`${CONTAINER} py-20 md:py-28`}>
           <SectionLabel as="h2">How we run it</SectionLabel>
@@ -216,7 +250,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── 4 · HOW WE LEARN YOUR VOICE ── ember-deep numerals, ink headings ── */}
+      {/* ── 5 · HOW WE LEARN YOUR VOICE ── ember-deep numerals, ink headings ── */}
       <section className="border-b border-rule">
         <div className={`${CONTAINER} py-20 md:py-28`}>
           <SectionLabel as="h2">How we learn your voice</SectionLabel>
@@ -247,7 +281,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── 5 · EVERYTHING HUMAN. NO AI. ── ink ground, single ember-light rule ── */}
+      {/* ── 6 · EVERYTHING HUMAN. NO AI. ── ink ground, single ember-light rule ── */}
       <section className="bg-ink text-bone">
         <div className={`${CONTAINER} py-24 md:py-32`}>
           <span aria-hidden className="block h-0.5 w-16 bg-ember-light" />
@@ -278,7 +312,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── 6 · WHAT WE MEASURE ── two columns, no red, headings carry meaning ── */}
+      {/* ── 7 · WHAT WE MEASURE ── two columns, no red, headings carry meaning ── */}
       <section className="border-b border-rule">
         <div className={`${CONTAINER} py-20 md:py-28`}>
           <SectionLabel as="h2">What we measure — and what we refuse to optimize for</SectionLabel>
@@ -327,7 +361,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── 7 · WHO IS IN YOUR INBOX ── */}
+      {/* ── 8 · WHO IS IN YOUR INBOX ── */}
       <section className="border-b border-rule">
         <div className={`${CONTAINER} py-20 md:py-28`}>
           <SectionLabel as="h2">Who is in your inbox</SectionLabel>
@@ -355,40 +389,6 @@ export default function ServicesPage() {
             is managed by paying properly and keeping people on the same pages long enough to be good
             at them.
           </p>
-        </div>
-      </section>
-
-      {/* ── 8 · PACKAGES ── carousel (one ember: the active dot) + separate Card 4 ── */}
-      <section className="border-b border-rule">
-        <div className={`${CONTAINER} py-20 md:py-28`}>
-          <SectionLabel as="h2">Where to start</SectionLabel>
-          <p className={`mt-8 ${PROSE}`}>
-            Four ways to work with us. Most creators start narrow and widen once the inbox is
-            producing.
-          </p>
-
-          <PackagesCarousel />
-
-          {/* Card 4 — a different buyer; deliberately set apart from the carousel */}
-          <div className="mt-16 max-w-[44rem] border border-rule-strong bg-bone p-8 md:p-10">
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-label text-graphite">
-              04 &mdash; For agencies, not creators
-            </p>
-            <h3 className="mt-4 font-sans text-2xl font-bold uppercase tracking-display text-ink">
-              Chatting Bench
-            </h3>
-            <p className="mt-3 max-w-measure leading-[1.55] text-graphite">
-              A trained chatting team working inside your existing systems, under your brand, with a
-              team lead, quality scoring, and shift reporting.
-            </p>
-            <Link
-              href="/contact?topic=agency"
-              className="mt-6 inline-flex items-center gap-2 self-start border-b border-ink pb-1 font-mono text-[11px] font-semibold uppercase tracking-label text-ink transition-colors duration-200 hover:border-ember-deep hover:text-ember-deep"
-            >
-              Talk to us about agency partnerships
-              <span aria-hidden>&rarr;</span>
-            </Link>
-          </div>
         </div>
       </section>
 
