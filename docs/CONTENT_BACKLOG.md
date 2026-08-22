@@ -27,9 +27,10 @@ original Wave 2 titles and angles.
 
 ## Status
 
-**Live: 19 of 40 · Queued: 18 buildable · Gated (skip): 3** — #11 (account suspension), #21 (DMCA),
-#29 (LLC), which need primary US legal/tax sources + a disclaimer (owner + counsel). The **✅ Live rows
-in the table below are authoritative**; these header counts are re-synced at checkpoints, not every article.
+**Live: 37 of 40 · Queued: 0 buildable · Gated (not shipped): 3** — #11 (account suspension), #21 (DMCA),
+#29 (LLC), which need primary US legal/tax sources + a disclaimer (owner + counsel). **The entire
+buildable Wave 2 queue is shipped and live.** The 3 gated pieces are the only Wave 2 items left, and
+they are deliberately not built without sourcing. The ✅ Live rows in the table below are authoritative.
 
 ## Wave 2 — the next 40, highest value first
 
@@ -74,7 +75,7 @@ in the table below are authoritative**; these header counts are re-synced at che
 | 37 | agency-selection | The Fit Scorecard: Twelve Signals That You're Ready to Be Managed | A scored self-assessment that returns "not yet" for most people, with the specific gap to close before reapplying. | ✅ Live · `/resources/agency-selection/fit-scorecard` |
 | 38 | getting-started | Is It Too Late to Start in 2026? The Answer Depends on One Number | Reframe a discouragement query into a qualification test — the number is hours per week available for production, not follower count. | ✅ Live · `/resources/getting-started/too-late-to-start` |
 | 39 | growth | Promo Accounts Get Banned. Build the System Assuming It Happens. | Redundancy as a design principle across Reddit, Snapchat and short-form: account portfolios, warm spares, and content that survives a channel dying. | ✅ Live · `/resources/growth/build-for-the-ban` |
-| 40 | content-ops | The DM System: Who Gets Messaged, When, and What Happens If Nobody Replies | Coverage rules beat clever copy — define who is owed a message today and the fallback path when a thread goes quiet. | Queued |
+| 40 | content-ops | The DM System: Who Gets Messaged, When, and What Happens If Nobody Replies | Coverage rules beat clever copy — define who is owed a message today and the fallback path when a thread goes quiet. | ✅ Live · `/resources/content-ops/dm-system` |
 
 **Wave 2 by hub:** content-ops 18 · growth 8 · agency-selection 5 · pricing 4 · compliance 3 · getting-started 2.
 
