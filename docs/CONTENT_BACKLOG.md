@@ -27,7 +27,7 @@ original Wave 2 titles and angles.
 
 ## Status
 
-**Live: ~12 of 40 · Queued: ~25 buildable · Gated (skip): 3** — #11 (account suspension), #21 (DMCA),
+**Live: 16 of 40 · Queued: 21 buildable · Gated (skip): 3** — #11 (account suspension), #21 (DMCA),
 #29 (LLC), which need primary US legal/tax sources + a disclaimer (owner + counsel). The **✅ Live rows
 in the table below are authoritative**; these header counts are re-synced at checkpoints, not every article.
 
@@ -52,7 +52,7 @@ in the table below are authoritative**; these header counts are re-synced at che
 | 15 | content-ops | How Much Content Can You Actually Make? | Capacity math before you promise a schedule — shoot hours, edit hours and approval time per deliverable format. | ✅ Live · `/resources/content-ops/content-capacity` |
 | 16 | agency-selection | The Red Flags Are in Their Own Marketing | Read an agency's website like an auditor: what they publish about contracts, exit, ownership and fees, and what the silences mean. | ✅ Live · `/resources/agency-selection/agency-red-flags` |
 | 17 | content-ops | Ten Minutes Before You Blast the List | A pre-send gate for mass messages — segment check, link check, price check, exclusion check — because the send is unrecoverable. | ✅ Live · `/resources/content-ops/mass-message-checklist` |
-| 18 | getting-started | Why So Many Creators Stall at $3K and What Breaks the Ceiling | The ceiling is almost never traffic; it is offer depth, message coverage and content runway. Written from managing a roster with this exact problem. | Queued |
+| 18 | getting-started | Why So Many Creators Stall at $3K and What Breaks the Ceiling | The ceiling is almost never traffic; it is offer depth, message coverage and content runway. Written from managing a roster with this exact problem. | ✅ Live · `/resources/getting-started/breaking-the-ceiling` |
 | 19 | growth | If You Can't Say Which Post Made the Sale, You Don't Have a Funnel | UTM and link-tracking setup for creators, at the level of detail that actually survives a platform stripping parameters. | Queued |
 | 20 | content-ops | When to Resend a PPV — and When Resending Is Just Annoying People | A decision rule based on open rate, spend segment and time since last send, replacing "resend after 24 hours" folklore. | Queued |
 | 21 | compliance | Filing a DMCA That Actually Gets Content Pulled | The US takedown process end to end: evidence capture, the notice elements that matter, host vs search de-indexing, and what to do when it fails. | Queued |
