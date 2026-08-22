@@ -27,13 +27,9 @@ original Wave 2 titles and angles.
 
 ## Status
 
-**Live: 12 of 40** (rows marked ✅ Live). Built in value order: the `content-ops` hub's five spokes
-(#1–4, 6) shipped with the hub, then #5, #7, #8, #9, #10, #12, #13.
-
-**Review-gated — do NOT ship without primary sources + a legal/tax disclaimer (owner + counsel):**
-#11 (account suspension), #21 (DMCA), #29 (LLC). Skipped in the autonomous build run.
-
-**Queued: 25 buildable** (40 − 12 live − 3 gated). See the Status column in the table for each.
+**Live: ~12 of 40 · Queued: ~25 buildable · Gated (skip): 3** — #11 (account suspension), #21 (DMCA),
+#29 (LLC), which need primary US legal/tax sources + a disclaimer (owner + counsel). The **✅ Live rows
+in the table below are authoritative**; these header counts are re-synced at checkpoints, not every article.
 
 ## Wave 2 — the next 40, highest value first
 
@@ -52,7 +48,7 @@ original Wave 2 titles and angles.
 | 11 | compliance | Your Account Just Got Suspended. The First 48 Hours, in Order. | A sequenced US response: evidence preservation, appeal wording, payout protection, subscriber communication, and what not to do in hour one. | Queued |
 | 12 | growth | TikTok at Volume Without Losing the Accounts | Warmup schedules, device and identity hygiene, posting ceilings, and ban recovery — written from running many accounts, not from one. | ✅ Live · `/resources/growth/tiktok-at-volume` |
 | 13 | content-ops | Write Down What You Will Never Do — Before a Chatter Has to Guess | A constraint map is a safety document and a sales document at once; the boundaries a creator never wrote down are the ones a chatter sells past. | ✅ Live · `/resources/content-ops/constraint-map` |
-| 14 | pricing | Every Discount You Run Trains Someone to Wait | Guardrails on discounting: frequency ceilings, who is eligible, and the rebill damage a recurring sale does to a subscriber base. | Queued |
+| 14 | pricing | Every Discount You Run Trains Someone to Wait | Guardrails on discounting: frequency ceilings, who is eligible, and the rebill damage a recurring sale does to a subscriber base. | ✅ Live · `/resources/pricing/discount-guardrails` |
 | 15 | content-ops | How Much Content Can You Actually Make? | Capacity math before you promise a schedule — shoot hours, edit hours and approval time per deliverable format. | Queued |
 | 16 | agency-selection | The Red Flags Are in Their Own Marketing | Read an agency's website like an auditor: what they publish about contracts, exit, ownership and fees, and what the silences mean. | Queued |
 | 17 | content-ops | Ten Minutes Before You Blast the List | A pre-send gate for mass messages — segment check, link check, price check, exclusion check — because the send is unrecoverable. | Queued |
