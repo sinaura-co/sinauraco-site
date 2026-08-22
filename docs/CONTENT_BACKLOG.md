@@ -27,10 +27,12 @@ original Wave 2 titles and angles.
 
 ## Status
 
-**Live: 37 of 40 · Queued: 0 buildable · Gated (not shipped): 3** — #11 (account suspension), #21 (DMCA),
-#29 (LLC), which need primary US legal/tax sources + a disclaimer (owner + counsel). **The entire
-buildable Wave 2 queue is shipped and live.** The 3 gated pieces are the only Wave 2 items left, and
-they are deliberately not built without sourcing. The ✅ Live rows in the table below are authoritative.
+**Live: 39 of 40 · Queued: 0 buildable · Gated (not shipped): 1** — only #11 (account suspension)
+remains. It is blocked on *source access*, not sourcing effort: the article's spine is the platform's
+own suspension/appeal/payout mechanics, and the platform Terms of Service is unreachable from our
+tooling (blocked by policy). #21 (DMCA) and #29 (LLC) shipped 22 Aug, built to the legal/tax gate from
+primary US sources (U.S. Copyright Office, IRS, state records) with a visible not-advice disclosure near
+the top. The ✅ Live rows in the table below are authoritative.
 
 ## Wave 2 — the next 40, highest value first
 
@@ -46,7 +48,7 @@ they are deliberately not built without sourcing. The ✅ Live rows in the table
 | 8 | agency-selection | Under $1,000 a Month? No Agency Should Take You Yet — Including Us | Explicit self-disqualification with the revenue math showing why management is negative-value below a threshold. | ✅ Live · `/resources/agency-selection/too-small-for-an-agency` |
 | 9 | content-ops | Do You Have Enough Content to Survive a Bad Month? | Content runway as an operating metric: weeks of banked assets divided by posting cadence, with the number below which you should not launch. | ✅ Live · `/resources/content-ops/content-runway` |
 | 10 | content-ops | The Preview Frame Is the Product | The PPV preview does all the selling; a pre-send check for framing, crop, first-second motion and caption-preview truncation. | ✅ Live · `/resources/content-ops/ppv-preview` |
-| 11 | compliance | Your Account Just Got Suspended. The First 48 Hours, in Order. | A sequenced US response: evidence preservation, appeal wording, payout protection, subscriber communication, and what not to do in hour one. | Queued |
+| 11 | compliance | Your Account Just Got Suspended. The First 48 Hours, in Order. | A sequenced US response: evidence preservation, appeal wording, payout protection, subscriber communication, and what not to do in hour one. | Gated · platform ToS unreachable |
 | 12 | growth | TikTok at Volume Without Losing the Accounts | Warmup schedules, device and identity hygiene, posting ceilings, and ban recovery — written from running many accounts, not from one. | ✅ Live · `/resources/growth/tiktok-at-volume` |
 | 13 | content-ops | Write Down What You Will Never Do — Before a Chatter Has to Guess | A constraint map is a safety document and a sales document at once; the boundaries a creator never wrote down are the ones a chatter sells past. | ✅ Live · `/resources/content-ops/constraint-map` |
 | 14 | pricing | Every Discount You Run Trains Someone to Wait | Guardrails on discounting: frequency ceilings, who is eligible, and the rebill damage a recurring sale does to a subscriber base. | ✅ Live · `/resources/pricing/discount-guardrails` |
@@ -56,7 +58,7 @@ they are deliberately not built without sourcing. The ✅ Live rows in the table
 | 18 | getting-started | Why So Many Creators Stall at $3K and What Breaks the Ceiling | The ceiling is almost never traffic; it is offer depth, message coverage and content runway. Written from managing a roster with this exact problem. | ✅ Live · `/resources/getting-started/breaking-the-ceiling` |
 | 19 | growth | If You Can't Say Which Post Made the Sale, You Don't Have a Funnel | UTM and link-tracking setup for creators, at the level of detail that actually survives a platform stripping parameters. | ✅ Live · `/resources/growth/attribution` |
 | 20 | content-ops | When to Resend a PPV — and When Resending Is Just Annoying People | A decision rule based on open rate, spend segment and time since last send, replacing "resend after 24 hours" folklore. | ✅ Live · `/resources/content-ops/ppv-resend` |
-| 21 | compliance | Filing a DMCA That Actually Gets Content Pulled | The US takedown process end to end: evidence capture, the notice elements that matter, host vs search de-indexing, and what to do when it fails. | Queued |
+| 21 | compliance | Filing a DMCA That Actually Gets Content Pulled | The US takedown process end to end: evidence capture, the notice elements that matter, host vs search de-indexing, and what to do when it fails. | ✅ Live · `/resources/compliance/dmca-takedown` |
 | 22 | content-ops | Ten Assets From One Shoot | The repurposing chain, asset by asset — what becomes a feed post, a PPV, a teaser, a Reel and a promo still, decided at the shot list, not afterwards. | ✅ Live · `/resources/content-ops/repurposing` |
 | 23 | pricing | The Offer Ladder: Most Creators Have Three Prices and Need Five | Price architecture — where the gaps are, which rung cannibalises which, and why the top rung exists even if nobody buys it. | ✅ Live · `/resources/pricing/offer-ladder` |
 | 24 | agency-selection | What Month One Under Management Should Look Like, Day by Day | A published 30-day plan with named deliverables and checkpoints, so a creator can hold any agency to it — including Sinaura. | ✅ Live · `/resources/agency-selection/month-one-under-management` |
@@ -64,7 +66,7 @@ they are deliberately not built without sourcing. The ✅ Live rows in the table
 | 26 | content-ops | Most Content Doesn't Need a Reshoot. Here's the Test That Tells You Which Does. | Reshoot is the most expensive decision in production and is usually made on taste; give it a performance and coverage test instead. | ✅ Live · `/resources/content-ops/reshoot-test` |
 | 27 | growth | Winning Back Expired Subscribers: Day 3, Day 14, Day 45 | A sequenced win-back with different offers and tones per window, and the point at which chasing costs more than acquiring. | ✅ Live · `/resources/growth/win-back` |
 | 28 | content-ops | How Often You Can Sell Before They Leave | Setting an offer-frequency ceiling per segment, and the churn signature that tells you the ceiling was breached last month. | ✅ Live · `/resources/content-ops/offer-frequency` |
-| 29 | compliance | Do You Need an LLC? An Honest Read for US Creators | Entity formation before you pay a filing service: what an LLC does and does not protect, state-level cost reality, and when a sole proprietorship is fine. Sourced to primary references, review-gated. | Queued |
+| 29 | compliance | Do You Need an LLC? An Honest Read for US Creators | Entity formation before you pay a filing service: what an LLC does and does not protect, state-level cost reality, and when a sole proprietorship is fine. Sourced to primary references, review-gated. | ✅ Live · `/resources/compliance/do-you-need-an-llc` |
 | 30 | content-ops | From Camera to Queue: The Handoff That Stops Content Dying in a Drive Folder | The post-production handoff — the single most common place content is lost between a creator and the people posting it. | ✅ Live · `/resources/content-ops/camera-to-queue` |
 | 31 | agency-selection | Chat Support or Full Management: The Question Is Who Owns the Calendar | The real dividing line is not scope of service, it is who controls the content calendar and the payout — reframe the buying decision. | ✅ Live · `/resources/agency-selection/chat-support-vs-management` |
 | 32 | growth | X Is a Conversion Channel, Not a Reach Channel | Follower count is close to irrelevant on X for this; the mechanics that matter are reply surface, pinned-post path and posting rhythm. | ✅ Live · `/resources/growth/x-conversion-channel` |
@@ -84,13 +86,28 @@ Sinaura's internal systems (the SOP library, the chatter framework, the reportin
 system) are the evidence base — every content-ops article can be written from
 something that already exists internally.
 
-### Review-gated (build with the legal/tax gate)
+### Review-gated (built to the legal/tax gate)
 
-Three Wave 2 pieces touch US legal or tax ground and carry the standard gate —
+These Wave 2 pieces touch US legal or tax ground and carry the standard gate —
 primary sources only (IRS, state statute, platform policy text), every figure
-cited with a retrieval date, a standing "not legal or tax advice" disclosure, and
-a corrections route at `contact@sinauraco.com`:
+cited with a retrieval date, a visible "not legal/tax advice — consult a licensed
+professional" disclosure near the top, and a corrections route at
+`contact@sinauraco.com`.
 
-- **#29** Do You Need an LLC? (compliance)
-- **#11** Your Account Just Got Suspended — First 48 Hours (compliance)
-- **#21** Filing a DMCA That Actually Gets Content Pulled (compliance)
+- **#21 — shipped 22 Aug** → `/resources/compliance/dmca-takedown`. Sourced to the
+  U.S. Copyright Office: §512(c)(3) notice elements, the §512(g) counter-notice and
+  its 10–14 business-day put-back, §512(f) misrepresentation liability, §411/§412
+  registration and the 3-month window, §504(c) statutory damages, and Circular 1 /
+  "What Is Copyright" on automatic protection.
+- **#29 — shipped 22 Aug** → `/resources/compliance/do-you-need-an-llc`. Sourced to
+  the IRS (disregarded-entity treatment, Schedule C, self-employment tax rate and
+  cap, additional Medicare tax, free EIN, Form 2553 S-election) plus Delaware §18-303
+  (limited liability) and the Florida Division of Corporations fee schedule — the two
+  states used as explicitly-flagged examples, since costs and rules vary by state and
+  change annually.
+- **#11 — still gated.** Blocked on *source access*, not effort. The article's spine
+  is platform suspension / appeal / payout mechanics, and the platform's own Terms of
+  Service is unreachable from this environment (fetch tool and browser both refused it
+  by policy). The only primary-sourceable claim is the federal ID-records law
+  (18 U.S.C. §2257). Cannot be written to standard until the owner supplies the
+  platform's ToS / Acceptable Use / Complaints Policy text.
