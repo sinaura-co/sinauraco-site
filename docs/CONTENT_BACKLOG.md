@@ -27,13 +27,13 @@ original Wave 2 titles and angles.
 
 ## Status
 
-**Live: 9 of 40** (rows marked ✅ Live). Built in value order: the `content-ops` hub's five spokes
-(#1–4, 6) shipped with the hub, then #5, #7, #8, #9.
+**Live: 10 of 40** (rows marked ✅ Live). Built in value order: the `content-ops` hub's five spokes
+(#1–4, 6) shipped with the hub, then #5, #7, #8, #9, #10.
 
 **Review-gated — do NOT ship without primary sources + a legal/tax disclaimer (owner + counsel):**
 #11 (account suspension), #21 (DMCA), #29 (LLC). Skipped in the autonomous build run.
 
-**Queued: 28 buildable** (40 − 9 live − 3 gated). See the Status column in the table for each.
+**Queued: 27 buildable** (40 − 10 live − 3 gated). See the Status column in the table for each.
 
 ## Wave 2 — the next 40, highest value first
 
@@ -48,7 +48,7 @@ original Wave 2 titles and angles.
 | 7 | growth | The Gap Between Your Promo and Your Page Is Where the Money Leaks | Message match, not traffic volume, is the usual cause of a low conversion rate — audit the promise chain from hook to bio to paywall. | ✅ Live · `/resources/growth/message-match` |
 | 8 | agency-selection | Under $1,000 a Month? No Agency Should Take You Yet — Including Us | Explicit self-disqualification with the revenue math showing why management is negative-value below a threshold. | ✅ Live · `/resources/agency-selection/too-small-for-an-agency` |
 | 9 | content-ops | Do You Have Enough Content to Survive a Bad Month? | Content runway as an operating metric: weeks of banked assets divided by posting cadence, with the number below which you should not launch. | ✅ Live · `/resources/content-ops/content-runway` |
-| 10 | content-ops | The Preview Frame Is the Product | The PPV preview does all the selling; a pre-send check for framing, crop, first-second motion and caption-preview truncation. | Queued |
+| 10 | content-ops | The Preview Frame Is the Product | The PPV preview does all the selling; a pre-send check for framing, crop, first-second motion and caption-preview truncation. | ✅ Live · `/resources/content-ops/ppv-preview` |
 | 11 | compliance | Your Account Just Got Suspended. The First 48 Hours, in Order. | A sequenced US response: evidence preservation, appeal wording, payout protection, subscriber communication, and what not to do in hour one. | Queued |
 | 12 | growth | TikTok at Volume Without Losing the Accounts | Warmup schedules, device and identity hygiene, posting ceilings, and ban recovery — written from running many accounts, not from one. | Queued |
 | 13 | content-ops | Write Down What You Will Never Do — Before a Chatter Has to Guess | A constraint map is a safety document and a sales document at once; the boundaries a creator never wrote down are the ones a chatter sells past. | Queued |
