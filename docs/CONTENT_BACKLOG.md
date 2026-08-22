@@ -73,7 +73,7 @@ in the table below are authoritative**; these header counts are re-synced at che
 | 36 | content-ops | Managing a Whale Without Being Owned by One | Service boundaries for high-spend subscribers: response-time promises, custom scope, escalation, and the concentration risk of one subscriber. | ✅ Live · `/resources/content-ops/managing-a-whale` |
 | 37 | agency-selection | The Fit Scorecard: Twelve Signals That You're Ready to Be Managed | A scored self-assessment that returns "not yet" for most people, with the specific gap to close before reapplying. | ✅ Live · `/resources/agency-selection/fit-scorecard` |
 | 38 | getting-started | Is It Too Late to Start in 2026? The Answer Depends on One Number | Reframe a discouragement query into a qualification test — the number is hours per week available for production, not follower count. | ✅ Live · `/resources/getting-started/too-late-to-start` |
-| 39 | growth | Promo Accounts Get Banned. Build the System Assuming It Happens. | Redundancy as a design principle across Reddit, Snapchat and short-form: account portfolios, warm spares, and content that survives a channel dying. | Queued |
+| 39 | growth | Promo Accounts Get Banned. Build the System Assuming It Happens. | Redundancy as a design principle across Reddit, Snapchat and short-form: account portfolios, warm spares, and content that survives a channel dying. | ✅ Live · `/resources/growth/build-for-the-ban` |
 | 40 | content-ops | The DM System: Who Gets Messaged, When, and What Happens If Nobody Replies | Coverage rules beat clever copy — define who is owed a message today and the fallback path when a thread goes quiet. | Queued |
 
 **Wave 2 by hub:** content-ops 18 · growth 8 · agency-selection 5 · pricing 4 · compliance 3 · getting-started 2.
