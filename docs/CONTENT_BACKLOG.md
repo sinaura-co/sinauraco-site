@@ -27,7 +27,7 @@ original Wave 2 titles and angles.
 
 ## Status
 
-**Live: 16 of 40 · Queued: 21 buildable · Gated (skip): 3** — #11 (account suspension), #21 (DMCA),
+**Live: 19 of 40 · Queued: 18 buildable · Gated (skip): 3** — #11 (account suspension), #21 (DMCA),
 #29 (LLC), which need primary US legal/tax sources + a disclaimer (owner + counsel). The **✅ Live rows
 in the table below are authoritative**; these header counts are re-synced at checkpoints, not every article.
 
@@ -56,7 +56,7 @@ in the table below are authoritative**; these header counts are re-synced at che
 | 19 | growth | If You Can't Say Which Post Made the Sale, You Don't Have a Funnel | UTM and link-tracking setup for creators, at the level of detail that actually survives a platform stripping parameters. | ✅ Live · `/resources/growth/attribution` |
 | 20 | content-ops | When to Resend a PPV — and When Resending Is Just Annoying People | A decision rule based on open rate, spend segment and time since last send, replacing "resend after 24 hours" folklore. | ✅ Live · `/resources/content-ops/ppv-resend` |
 | 21 | compliance | Filing a DMCA That Actually Gets Content Pulled | The US takedown process end to end: evidence capture, the notice elements that matter, host vs search de-indexing, and what to do when it fails. | Queued |
-| 22 | content-ops | Ten Assets From One Shoot | The repurposing chain, asset by asset — what becomes a feed post, a PPV, a teaser, a Reel and a promo still, decided at the shot list, not afterwards. | Queued |
+| 22 | content-ops | Ten Assets From One Shoot | The repurposing chain, asset by asset — what becomes a feed post, a PPV, a teaser, a Reel and a promo still, decided at the shot list, not afterwards. | ✅ Live · `/resources/content-ops/repurposing` |
 | 23 | pricing | The Offer Ladder: Most Creators Have Three Prices and Need Five | Price architecture — where the gaps are, which rung cannibalises which, and why the top rung exists even if nobody buys it. | Queued |
 | 24 | agency-selection | What Month One Under Management Should Look Like, Day by Day | A published 30-day plan with named deliverables and checkpoints, so a creator can hold any agency to it — including Sinaura. | Queued |
 | 25 | growth | Reels That Convert to Subscribers, Not Just Views | The conversion mechanics of a Reel — hook, bio path, story continuity — and why high-view accounts routinely convert worse than small ones. | Queued |
