@@ -27,11 +27,13 @@ original Wave 2 titles and angles.
 
 ## Status
 
-Five of the forty are already **live** — they are the five spokes of the
-`content-ops` hub, built alongside the hub itself. The rest are queued.
+Six of the forty are built. Five are **live** (the `content-ops` hub's five spokes,
+built alongside the hub). One is **built and pending deploy** — #5, the PPV break-even
+guide in the `pricing` hub. The rest are queued.
 
-**Built (5):** #1, #2, #3, #4, #6 → all under `/resources/content-ops/`.
-**Queued (35):** everything else below.
+**Live (5):** #1, #2, #3, #4, #6 → all under `/resources/content-ops/`.
+**Built, pending deploy (1):** #5 → `/resources/pricing/ppv-break-even`.
+**Queued (34):** everything else below.
 
 ## Wave 2 — the next 40, highest value first
 
@@ -41,7 +43,7 @@ Five of the forty are already **live** — they are the five spokes of the
 | 2 | content-ops | Scripts Don't Sell. Sequences Do. | A script library is a symptom of having no framework; publish the five-stage DM sequence and the decision point at each stage instead of lines to copy. | ✅ Live · `/resources/content-ops/scripts-dont-sell-sequences-do` |
 | 3 | content-ops | Making Four Chatters Sound Like One Person | Voice is only enforceable when it is written as a constraint list — banned words, escalation rules, punctuation, response length — not as adjectives. | ✅ Live · `/resources/content-ops/chatters-sound-like-one-person` |
 | 4 | content-ops | The Vault Is the Asset, Not the Account | A naming, tagging and retention system that survives a chatter handover, a device loss and a platform ban. Folds in file-naming conventions. | ✅ Live · `/resources/content-ops/the-vault-is-the-asset` |
-| 5 | pricing | What This PPV Has to Earn to Be Worth Sending | Break-even math that includes chatter time and list fatigue, not just the price — most PPVs that "worked" lost money once labour is priced in. | Queued |
+| 5 | pricing | What This PPV Has to Earn to Be Worth Sending | Break-even math that includes chatter time and list fatigue, not just the price — most PPVs that "worked" lost money once labour is priced in. | 🔨 Built (pending deploy) · `/resources/pricing/ppv-break-even` |
 | 6 | content-ops | The Operator's Week: A Calendar Built Around Sales Days, Not Posting Days | Posting cadence is the wrong spine for a week; sequence the week around send windows and let production serve them. | ✅ Live · `/resources/content-ops/the-operators-week` |
 | 7 | growth | The Gap Between Your Promo and Your Page Is Where the Money Leaks | Message match, not traffic volume, is the usual cause of a low conversion rate — audit the promise chain from hook to bio to paywall. | Queued |
 | 8 | agency-selection | Under $1,000 a Month? No Agency Should Take You Yet — Including Us | Explicit self-disqualification with the revenue math showing why management is negative-value below a threshold. | Queued |
