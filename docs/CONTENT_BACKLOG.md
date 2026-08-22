@@ -105,6 +105,11 @@ professional" disclosure near the top, and a corrections route at
   (limited liability) and the Florida Division of Corporations fee schedule — the two
   states used as explicitly-flagged examples, since costs and rules vary by state and
   change annually.
+  - **Annual accuracy review** — reviewed **2026-08-22**, next due **2027-08-22**
+    (recorded as `dateModified` and `nextReview` in the article frontmatter). Its IRS
+    figures (the self-employment cap especially), tax thresholds, and state fees change
+    year to year, so re-verify every source and refresh the numbers each year before
+    the next-due date.
 - **#11 — still gated.** Blocked on *source access*, not effort. The article's spine
   is platform suspension / appeal / payout mechanics, and the platform's own Terms of
   Service is unreachable from this environment (fetch tool and browser both refused it
