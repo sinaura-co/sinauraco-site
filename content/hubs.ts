@@ -44,6 +44,12 @@ export const HUB_META: HubMeta[] = [
     question: 'How do I get and keep subscribers?',
     category: 'marketing',
   },
+  {
+    slug: 'content-ops',
+    title: 'Content Operations for Creators',
+    question: 'How do I make a month of content every month?',
+    category: 'content',
+  },
 ]
 
 export function hubMeta(slug: string): HubMeta | undefined {

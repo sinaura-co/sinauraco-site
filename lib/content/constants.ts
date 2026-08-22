@@ -2,13 +2,15 @@
 // build-time validators, and the tests — one source of truth so a rule can
 // never drift between where it is declared and where it is enforced.
 
-// The five hubs (BUILD_SPEC §5.1). A doc's `hub` is its cluster membership.
+// The six hubs (BUILD_SPEC §5.1; content-ops added per CONTENT_TOPIC_MAP §5).
+// A doc's `hub` is its cluster membership.
 export const HUBS = [
   'agency-selection',
   'pricing',
   'getting-started',
   'compliance',
   'growth',
+  'content-ops',
 ] as const
 
 export type HubSlug = (typeof HUBS)[number]

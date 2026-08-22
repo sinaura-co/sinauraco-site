@@ -12,7 +12,11 @@ next-env.d.ts
 
 # Internal build specs and competitor-audit material — never commit (Amendment 01 §5).
 # Files stay on disk for the agent to read; they must not enter public history.
-/docs
+# Exception: the Wave 2 content backlog is an original build queue (original titles
+# and angles, no competitor material) and is tracked deliberately per owner
+# instruction (21 Aug 2026). Everything else under /docs stays ignored.
+/docs/*
+!/docs/CONTENT_BACKLOG.md
 
 # Internal build memory — kept LOCAL-ONLY per owner decision (16 Aug 2026): the
 # repo is public, and these are candid strategy notes. They stay on disk for the
