@@ -27,12 +27,14 @@ original Wave 2 titles and angles.
 
 ## Status
 
-**Live: 39 of 40 · Queued: 0 buildable · Gated (not shipped): 1** — only #11 (account suspension)
-remains. It is blocked on *source access*, not sourcing effort: the article's spine is the platform's
-own suspension/appeal/payout mechanics, and the platform Terms of Service is unreachable from our
-tooling (blocked by policy). #21 (DMCA) and #29 (LLC) shipped 22 Aug, built to the legal/tax gate from
-primary US sources (U.S. Copyright Office, IRS, state records) with a visible not-advice disclosure near
-the top. The ✅ Live rows in the table below are authoritative.
+**Live: 39 of 40 · In progress: 1 (#11, rescoped) · Gated: 0.** #21 (DMCA) and #29 (LLC) shipped 22 Aug
+to the legal/tax gate from primary US sources (U.S. Copyright Office, IRS, state records) with a visible
+not-advice disclosure. **#11 (account suspension) was RESCOPED 22 Aug (owner decision): it is NOT a legal
+article.** The platform ToS proved unreachable from our tooling, so rather than write a thin §2257 piece,
+#11 is reframed as an **operator playbook** — what SinauraCo actually does when a managed creator's account
+is flagged or suspended. It now ships to the same standard as the other 62 articles (`sources: []`, no
+legal claims, no citations, no gate) and is being written from a first-hand owner interview. The ✅ Live
+rows in the table below are authoritative.
 
 ## Wave 2 — the next 40, highest value first
 
@@ -48,7 +50,7 @@ the top. The ✅ Live rows in the table below are authoritative.
 | 8 | agency-selection | Under $1,000 a Month? No Agency Should Take You Yet — Including Us | Explicit self-disqualification with the revenue math showing why management is negative-value below a threshold. | ✅ Live · `/resources/agency-selection/too-small-for-an-agency` |
 | 9 | content-ops | Do You Have Enough Content to Survive a Bad Month? | Content runway as an operating metric: weeks of banked assets divided by posting cadence, with the number below which you should not launch. | ✅ Live · `/resources/content-ops/content-runway` |
 | 10 | content-ops | The Preview Frame Is the Product | The PPV preview does all the selling; a pre-send check for framing, crop, first-second motion and caption-preview truncation. | ✅ Live · `/resources/content-ops/ppv-preview` |
-| 11 | compliance | Your Account Just Got Suspended. The First 48 Hours, in Order. | A sequenced US response: evidence preservation, appeal wording, payout protection, subscriber communication, and what not to do in hour one. | Gated · platform ToS unreachable |
+| 11 | compliance | When a Managed Creator Gets Suspended: The Agency Playbook _(working title)_ | **Rescoped 22 Aug — operator playbook, NOT legal.** First-hand: what SinauraCo actually does when a managed creator is flagged or suspended — the first hour, who we contact and how, what we tell the creator, what restores an account vs. wastes time, and what we do if it's permanent. `sources: []`, no citations, no gate; same standard as the other 62. | Queued · rescoped; owner interview pending |
 | 12 | growth | TikTok at Volume Without Losing the Accounts | Warmup schedules, device and identity hygiene, posting ceilings, and ban recovery — written from running many accounts, not from one. | ✅ Live · `/resources/growth/tiktok-at-volume` |
 | 13 | content-ops | Write Down What You Will Never Do — Before a Chatter Has to Guess | A constraint map is a safety document and a sales document at once; the boundaries a creator never wrote down are the ones a chatter sells past. | ✅ Live · `/resources/content-ops/constraint-map` |
 | 14 | pricing | Every Discount You Run Trains Someone to Wait | Guardrails on discounting: frequency ceilings, who is eligible, and the rebill damage a recurring sale does to a subscriber base. | ✅ Live · `/resources/pricing/discount-guardrails` |
@@ -110,9 +112,9 @@ professional" disclosure near the top, and a corrections route at
     figures (the self-employment cap especially), tax thresholds, and state fees change
     year to year, so re-verify every source and refresh the numbers each year before
     the next-due date.
-- **#11 — still gated.** Blocked on *source access*, not effort. The article's spine
-  is platform suspension / appeal / payout mechanics, and the platform's own Terms of
-  Service is unreachable from this environment (fetch tool and browser both refused it
-  by policy). The only primary-sourceable claim is the federal ID-records law
-  (18 U.S.C. §2257). Cannot be written to standard until the owner supplies the
-  platform's ToS / Acceptable Use / Complaints Policy text.
+- **#11 — RESCOPED OUT of this gate (22 Aug owner decision).** No longer a legal
+  article. The platform ToS proved unreachable from this environment, so rather than
+  write a thin §2257 piece, the owner reframed #11 as an **operator playbook** — what
+  SinauraCo actually does when a managed creator's account is flagged or suspended.
+  Now a normal Wave 2 article (`sources: []`, no legal claims, no citations, no gate),
+  being written from a first-hand owner interview. Tracked as table row #11.
