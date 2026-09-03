@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
 // the glyphs stay identical to the source and Next's lint still passes.
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Privacy" accent="Policy" updated="August 19, 2025">
+    <LegalPage title="Privacy" accent="Policy" updated="September 2, 2026">
       <h2>1. Introduction</h2>
       <p>
         {'Sinaura Collectives LLC ("Sinaura Collectives," "we," "our," or "us") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your information when you visit sinauraco.com or use our services.'}
@@ -131,12 +131,22 @@ export default function PrivacyPage() {
         collect information from minors.
       </p>
 
-      <h2>11. Changes to This Policy</h2>
+      <h2>{'11. Cookies & Analytics'}</h2>
+      <p>
+        Our website does not use advertising or cross-site tracking cookies. To understand how our
+        site is used, we rely on Vercel Web Analytics, a privacy-friendly analytics service provided
+        by Vercel Inc.
+      </p>
+      <p>
+        {'Vercel Web Analytics is cookieless: it does not set cookies, does not store personal information, and does not track you across other websites. It collects only aggregated, anonymized usage data — such as page views, referring sites, and general device or browser type — which we use to improve our website and services.'}
+      </p>
+
+      <h2>12. Changes to This Policy</h2>
       <p>
         {'We may update this Privacy Policy at any time. Updates will be posted on this page with a revised "Last Updated" date.'}
       </p>
 
-      <h2>12. Contact Us</h2>
+      <h2>13. Contact Us</h2>
       <p>
         If you have any questions about this Privacy Policy, contact us at:
         <br />
