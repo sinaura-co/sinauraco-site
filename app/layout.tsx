@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import { site } from '@/content/site'
 import './globals.css'
 
@@ -53,6 +54,7 @@ export default function RootLayout({
         <noscript>
           <style>{`[data-reveal]{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
+        <Analytics />
       </body>
     </html>
   )
