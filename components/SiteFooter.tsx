@@ -9,6 +9,7 @@ import { site } from '@/content/site'
 // year auto-generates (§D5); the registered-agent address renders from site.ts so
 // it can never drift from Organization.address.
 const FOOTER_LINKS = [
+  { label: 'Resources', href: '/resources' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Careers', href: '/careers' },
   { label: 'Roadmap', href: '/roadmap' },
