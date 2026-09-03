@@ -70,28 +70,28 @@ const ABOUT_FEATURES = [
 
 const SERVICES = [
   {
-    title: 'Fan management & engagement',
-    desc: 'Our trained team handles daily messaging, upsells, and relationship-building so you can focus on content. 24/7 coverage that keeps your fans engaged.',
+    title: 'Managed chatting, 24/7',
+    desc: 'A trained team runs your inbox around the clock — messaging, upselling, and building the relationships that make a page pay — so it never goes quiet and you never touch a DM you don’t want to.',
   },
   {
-    title: 'Revenue growth strategies',
-    desc: 'Data-driven promotions, campaigns, and upsell systems designed to increase your income consistently. We optimize pricing, offers, and conversion flows.',
+    title: 'Written in your voice',
+    desc: 'A fan can tell within a few messages when the person writing isn’t the one they subscribed to. We learn your voice before we send a word — the part most outsourced chatting skips.',
   },
   {
-    title: 'Content scheduling & optimization',
-    desc: 'Guidance on when and how to post for maximum engagement. We plan, schedule, and analyze so every piece of content works harder for you.',
+    title: 'One account first, then widen',
+    desc: 'We go deep on your primary account before adding a second. Splitting chat time thin across every platform costs you the one that pays best — so we run one operation properly, not five at half strength.',
   },
   {
-    title: 'Ongoing support & reporting',
-    desc: 'Weekly updates, strategy sessions, and performance reports so you always know your progress. Full transparency, zero guesswork.',
+    title: 'Revenue that compounds',
+    desc: 'Pricing, offers, and upsell flows built for repeat buyers and retention — not the vanity spike a discount buys for a week. Any metric won by damaging the page isn’t a metric.',
   },
   {
-    title: 'Professional branding',
-    desc: 'Assistance with organizing your vault, structuring your offers, and building a fan experience that keeps subscribers coming back for more.',
+    title: 'You keep everything',
+    desc: 'Your content, your account, your audience. Co-manager access only — never your password — and it all stays yours to walk away with on 30 days’ notice.',
   },
   {
-    title: 'Multi-platform marketing',
-    desc: 'Strategic growth across Instagram, TikTok, Twitter, Reddit, and more. We drive traffic from every angle to maximize your reach and revenue.',
+    title: 'Weekly reporting',
+    desc: 'Weekly updates on your real numbers and the calls we made on your behalf. Full transparency, zero guesswork — you always know where the account stands.',
   },
 ]
 
@@ -232,11 +232,11 @@ export default function Home() {
               What we do
             </SectionLabel>
             <h3 className="mt-5 font-sans text-[clamp(1.9rem,4vw,3rem)] font-bold leading-[1.06] tracking-long text-ink">
-              All-in-one <em className="not-italic text-ember">creator support</em>
+              The inbox is <em className="not-italic text-ember">the business</em>
             </h3>
             <p className="mt-5 text-lg leading-[1.5] text-graphite">
-              From content planning to fan engagement &mdash; we&rsquo;ve got every angle covered so
-              you can focus on what you do best.
+              The money is made in the inbox. We run it with a trained team, in your voice, on the
+              account that pays first &mdash; so you can focus on making content.
             </p>
           </Reveal>
           <ul className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
