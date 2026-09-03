@@ -211,12 +211,12 @@ export default function Home() {
               <figure className="relative overflow-hidden border border-rule bg-paper p-10 md:p-12">
                 <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-ink" />
                 <blockquote className="font-sans text-[26px] font-bold leading-[1.3] tracking-tight text-ink">
-                  &ldquo;We don&rsquo;t just manage accounts &mdash; we build empires.&rdquo;
+                  &ldquo;Any metric that can be won by damaging the page is not a metric. It is a
+                  temptation.&rdquo;
                 </blockquote>
                 <figcaption className="mt-5 font-counter text-[15px] italic leading-[1.65] text-graphite">
-                  Sinaura Collectives operates as a dedicated creator management agency. We review all
-                  applications with the highest level of confidentiality to ensure your personal
-                  information and business details remain private and secure.
+                  We optimize for what compounds &mdash; retention, repeat buyers, and the long-term
+                  health of the page &mdash; not the vanity spikes a discount can buy for a week.
                 </figcaption>
               </figure>
             </Reveal>
